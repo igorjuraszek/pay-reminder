@@ -14,11 +14,12 @@ Router.map(function () {
       this.route('show', { path: '/:id' });
     });
     this.route('dashboard');
-    this.route('contributions');
+    this.route('contributions', function () {
+      this.route('history');
+    });
     this.route('contribution', function () {
       this.route('show', { path: '/:id' });
     });
-    this.route('history');
   });
   this.route('login');
   this.route('register');

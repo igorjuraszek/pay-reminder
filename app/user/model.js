@@ -11,5 +11,6 @@ export default class UserModel extends Model {
   @attr('string') paypalUsername;
   @attr('boolean', { defaultValue: false }) isDeleted;
   @attr('boolean', { defaultValue: false }) isAdmin;
-  @hasMany('contribution') contributions;
+  @hasMany('contribution-user') contributions;
+  @hasMany('contribution') createdContributions;
 }
