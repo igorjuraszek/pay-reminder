@@ -5,7 +5,9 @@ export default class HomeContributionsRoute extends Route {
   @service store;
 
   model() {
-    const contributionUser = this.store.findAll('contribution-user');
-    return contributionUser;
+    // const contributionUser = this.store.findAll('contribution-user');
+    // return contributionUser;
+    const contributions = this.store.findAll('contribution');
+    return contributions;
   }
 }

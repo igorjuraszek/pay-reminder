@@ -74,7 +74,7 @@ export default class HomeRoute extends Route {
     this.store
       .createRecord('contribution-user', {
         contribution: contribution1Model,
-        user: user2Model,
+        contributor: user2Model,
         amount: 25,
         isPaid: false,
       })
@@ -82,7 +82,7 @@ export default class HomeRoute extends Route {
     this.store
       .createRecord('contribution-user', {
         contribution: contribution1Model,
-        user: user1Model,
+        contributor: user1Model,
         amount: 40,
         isPaid: true,
       })
@@ -90,7 +90,7 @@ export default class HomeRoute extends Route {
     this.store
       .createRecord('contribution-user', {
         contribution: contribution1Model,
-        user: user3Model,
+        contributor: user3Model,
         amount: 55,
         isPaid: false,
       })
