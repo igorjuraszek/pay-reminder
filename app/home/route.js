@@ -8,6 +8,8 @@ export default class HomeRoute extends Route {
     const user1 = {
       id: 1,
       username: 'admin',
+      name: 'admin',
+      surname: 'admin',
       password: 'admin123',
       email: 'admin@admin.com',
       isAdmin: true,
@@ -15,48 +17,64 @@ export default class HomeRoute extends Route {
     const user2 = {
       id: 2,
       username: 'user',
+      name: 'user',
+      surname: 'user',
       password: 'user123',
       email: 'user@user.com',
     };
     const user3 = {
       id: 3,
       username: 'staszek',
+      name: 'Staszek',
+      surname: 'Staśkiewicz',
       password: 'staszek123',
       email: 'staszek@staszek.com',
     };
     const user4 = {
       id: 4,
       username: 'pawelzwarszawy',
+      name: 'Paweł',
+      surname: 'Warszawski',
       password: 'pawel123',
       email: 'pawelzwarszawy@gmail.com',
     };
     const user5 = {
       id: 5,
       username: 'piotrek',
+      name: 'Piotr',
+      surname: 'Piotrowski',
       password: 'piotrek123',
       email: 'piotrek@piotrek.com',
     };
     const user6 = {
       id: 6,
       username: 'damiandk',
+      name: 'Damian',
+      surname: 'Kokołaj',
       password: 'damian123',
       email: 'damiandk@gmail.com',
     };
     const user7 = {
       id: 7,
       username: 'jacek',
+      name: 'Jacek',
+      surname: 'Jackowski',
       password: 'jacek123',
       email: 'jacek@wp.pl',
     };
     const user8 = {
       id: 8,
       username: 'gosia87',
+      name: 'Małgorzata',
+      surname: 'Kowalska',
       password: 'gosia123',
       email: 'malgorzata@malgosia.com',
     };
     const user9 = {
       id: 9,
       username: 'kasia',
+      name: 'Katarzyna',
+      surname: 'Nowak',
       password: 'kasia123',
       email: 'kasia@katarzyna.com',
     };

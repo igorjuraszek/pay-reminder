@@ -20,9 +20,9 @@
           </tr>
         </thead>
         <tbody>
-          {{#each @contribution.contributors as |contribution-user|}}
+          {{#each @contribution.contributors as |contributionUser|}}
             <Contributions::List::Contribution::Row
-              @contribution-user={{contribution-user}}
+              @contributionUser={{contributionUser}}
             />
           {{/each}}
         </tbody>

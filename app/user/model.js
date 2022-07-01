@@ -2,6 +2,8 @@ import Model, { attr, hasMany } from '@ember-data/model';
 
 export default class UserModel extends Model {
   @attr('string') username;
+  @attr('string') name;
+  @attr('string') surname;
   @attr('string') password;
   @attr('string') email;
   @attr('string') photoURL;

@@ -17,8 +17,8 @@
       </tr>
     </thead>
     <tbody>
-      {{#each @contribution.contributors as |contribution-user|}}
-        <Contribution::Details::Row @contribution-user={{contribution-user}} />
+      {{#each @contribution.contributors as |contributionUser|}}
+        <Contribution::Details::Row @contributionUser={{contributionUser}} />
       {{/each}}
     </tbody>
     <thead>

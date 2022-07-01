@@ -1,8 +1,11 @@
-<tr class='table-success'>
-  <td>{{@contribution-user.contributor.username}}</td>
-  <td>{{@contribution-user.amount}} PLN</td>
-  <td>{{@contribution-user.isPaid}}</td>
-  <td>#actions</td>
+<tr class={{if this.isPaidByUser 'table-success' 'table-danger'}}>
+  <td>{{@contributionUser.contributor.username}}</td>
+  <td>{{@contributionUser.amount}} PLN</td>
+  {{#if this.isPaidByUser}}
+    <td>Paid</td>
+    <td></td>
+  {{else}}
+    <td>Not paid</td>
+    <td><a href=''>Confirm payment</a> or <a href=''>Remind</a></td>
+  {{/if}}
 </tr>
-
-{{yield}}
