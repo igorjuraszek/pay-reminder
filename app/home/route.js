@@ -24,34 +24,101 @@ export default class HomeRoute extends Route {
       password: 'staszek123',
       email: 'staszek@staszek.com',
     };
+    const user4 = {
+      id: 4,
+      username: 'pawelzwarszawy',
+      password: 'pawel123',
+      email: 'pawelzwarszawy@gmail.com',
+    };
+    const user5 = {
+      id: 5,
+      username: 'piotrek',
+      password: 'piotrek123',
+      email: 'piotrek@piotrek.com',
+    };
+    const user6 = {
+      id: 6,
+      username: 'damiandk',
+      password: 'damian123',
+      email: 'damiandk@gmail.com',
+    };
+    const user7 = {
+      id: 7,
+      username: 'jacek',
+      password: 'jacek123',
+      email: 'jacek@wp.pl',
+    };
+    const user8 = {
+      id: 8,
+      username: 'gosia87',
+      password: 'gosia123',
+      email: 'malgorzata@malgosia.com',
+    };
+    const user9 = {
+      id: 9,
+      username: 'kasia',
+      password: 'kasia123',
+      email: 'kasia@katarzyna.com',
+    };
 
     const user1Model = this.store.createRecord('user', user1);
     const user2Model = this.store.createRecord('user', user2);
     const user3Model = this.store.createRecord('user', user3);
+    const user4Model = this.store.createRecord('user', user4);
+    const user5Model = this.store.createRecord('user', user5);
+    const user6Model = this.store.createRecord('user', user6);
+    const user7Model = this.store.createRecord('user', user7);
+    const user8Model = this.store.createRecord('user', user8);
+    const user9Model = this.store.createRecord('user', user9);
     await user1Model.save();
     await user2Model.save();
     await user3Model.save();
+    await user4Model.save();
+    await user5Model.save();
+    await user6Model.save();
+    await user7Model.save();
+    await user8Model.save();
+    await user9Model.save();
 
     const contribution1 = {
       id: 1,
-      title: 'Testowy 1',
+      title: 'Pizza',
       createdAd: '21-05-2022 20:00',
-      owner: user1Model,
-      goal: '100',
+      deadline: '22-12-2022 21:00',
+      owner: user4Model,
+      goal: '120',
     };
     const contribution2 = {
       id: 2,
-      title: 'Testowy 2',
+      title: 'Dzień nauczyciela',
       createdAd: '20-05-2022 20:00',
-      owner: user2Model,
-      goal: '200',
+      deadline: '22-12-2022 21:00',
+      owner: user5Model,
+      goal: '250',
     };
     const contribution3 = {
       id: 3,
-      title: 'Testowy 2',
-      createdAd: '15-05-2022 20:00',
-      owner: user3Model,
-      goal: '150',
+      title: 'Prezent dla Wojtka',
+      createdAd: '18-05-2022 20:00',
+      deadline: '22-12-2022 21:00',
+      owner: user5Model,
+      goal: '130',
+    };
+    const contribution4 = {
+      id: 4,
+      title: 'Paliwo za czerwiec',
+      createdAd: '27-05-2022 20:00',
+      deadline: '22-12-2022 21:00',
+      owner: user6Model,
+      goal: '660',
+    };
+    const contribution5 = {
+      id: 5,
+      title: 'Wyjazd do pragi',
+      createdAd: '28-05-2022 20:00',
+      deadline: '22-12-2022 21:00',
+      owner: user7Model,
+      goal: '1560',
     };
 
     const contribution1Model = this.store.createRecord(
@@ -66,15 +133,25 @@ export default class HomeRoute extends Route {
       'contribution',
       contribution3
     );
+    const contribution4Model = this.store.createRecord(
+      'contribution',
+      contribution4
+    );
+    const contribution5Model = this.store.createRecord(
+      'contribution',
+      contribution5
+    );
 
     await contribution1Model.save();
     await contribution2Model.save();
     await contribution3Model.save();
+    await contribution4Model.save();
+    await contribution5Model.save();
 
     this.store
       .createRecord('contribution-user', {
         contribution: contribution1Model,
-        contributor: user2Model,
+        contributor: user3Model,
         amount: 25,
         isPaid: false,
       })
@@ -82,7 +159,7 @@ export default class HomeRoute extends Route {
     this.store
       .createRecord('contribution-user', {
         contribution: contribution1Model,
-        contributor: user1Model,
+        contributor: user4Model,
         amount: 40,
         isPaid: true,
       })
@@ -90,8 +167,130 @@ export default class HomeRoute extends Route {
     this.store
       .createRecord('contribution-user', {
         contribution: contribution1Model,
-        contributor: user3Model,
+        contributor: user5Model,
         amount: 55,
+        isPaid: false,
+      })
+      .save();
+
+    this.store
+      .createRecord('contribution-user', {
+        contribution: contribution2Model,
+        contributor: user5Model,
+        amount: 25,
+        isPaid: false,
+      })
+      .save();
+    this.store
+      .createRecord('contribution-user', {
+        contribution: contribution2Model,
+        contributor: user6Model,
+        amount: 40,
+        isPaid: true,
+      })
+      .save();
+    this.store
+      .createRecord('contribution-user', {
+        contribution: contribution2Model,
+        contributor: user7Model,
+        amount: 55,
+        isPaid: false,
+      })
+      .save();
+
+    this.store
+      .createRecord('contribution-user', {
+        contribution: contribution2Model,
+        contributor: user8Model,
+        amount: 25,
+        isPaid: false,
+      })
+      .save();
+    this.store
+      .createRecord('contribution-user', {
+        contribution: contribution2Model,
+        contributor: user9Model,
+        amount: 40,
+        isPaid: true,
+      })
+      .save();
+    this.store
+      .createRecord('contribution-user', {
+        contribution: contribution3Model,
+        contributor: user9Model,
+        amount: 1500,
+        isPaid: false,
+      })
+      .save();
+
+    this.store
+      .createRecord('contribution-user', {
+        contribution: contribution4Model,
+        contributor: user4Model,
+        amount: 78,
+        isPaid: false,
+      })
+      .save();
+
+    this.store
+      .createRecord('contribution-user', {
+        contribution: contribution4Model,
+        contributor: user5Model,
+        amount: 26,
+        isPaid: false,
+      })
+      .save();
+
+    this.store
+      .createRecord('contribution-user', {
+        contribution: contribution4Model,
+        contributor: user6Model,
+        amount: 199,
+        isPaid: false,
+      })
+      .save();
+
+    this.store
+      .createRecord('contribution-user', {
+        contribution: contribution4Model,
+        contributor: user7Model,
+        amount: 22,
+        isPaid: false,
+      })
+      .save();
+
+    this.store
+      .createRecord('contribution-user', {
+        contribution: contribution4Model,
+        contributor: user8Model,
+        amount: 30,
+        isPaid: false,
+      })
+      .save();
+
+    this.store
+      .createRecord('contribution-user', {
+        contribution: contribution5Model,
+        contributor: user4Model,
+        amount: 80,
+        isPaid: false,
+      })
+      .save();
+
+    this.store
+      .createRecord('contribution-user', {
+        contribution: contribution5Model,
+        contributor: user5Model,
+        amount: 25,
+        isPaid: false,
+      })
+      .save();
+
+    this.store
+      .createRecord('contribution-user', {
+        contribution: contribution5Model,
+        contributor: user6Model,
+        amount: 15,
         isPaid: false,
       })
       .save();
