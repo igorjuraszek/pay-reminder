@@ -1,1 +1,35 @@
+<div class='details'>
+  <div class='text-center'>
+    <h2>{{@contribution.title}}</h2>
+    <h3>Owner: {{@contribution.owner.username}}</h3>
+    <h4>Deadline: {{@contribution.deadline}}</h4>
+    <h4>Status: {{@contribution.isClosed}}</h4>
+  </div>
+
+  {{! template-lint-disable table-groups }}
+  <table class='table'>
+    <thead>
+      <tr>
+        <th scope='col'>Username</th>
+        <th scope='col'>Amount</th>
+        <th scope='col'>Status</th>
+        <th scope='col'>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      {{#each @contribution.contributors as |contribution-user|}}
+        <Contribution::Details::Row @contribution-user={{contribution-user}} />
+      {{/each}}
+    </tbody>
+    <thead>
+      <tr>
+        <th scope='col'>Summary:</th>
+        <th scope='col'>{{@contribution.goal}} PLN</th>
+        <th scope='col'></th>
+        <th scope='col'></th>
+      </tr>
+    </thead>
+  </table>
+</div>
+
 {{yield}}

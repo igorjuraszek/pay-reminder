@@ -1,6 +1,6 @@
 <nav class='navbar navbar-expand-lg bg-light'>
   <div class='container-fluid'>
-    <a class='navbar-brand' href='#'>Navbar w/ text</a>
+    <LinkTo class='navbar-brand' @route='home.dashboard'>Home</LinkTo>
     <button
       class='navbar-toggler'
       type='button'
@@ -15,13 +15,27 @@
     <div class='collapse navbar-collapse' id='navbarText'>
       <ul class='navbar-nav me-auto mb-2 mb-lg-0'>
         <li class='nav-item'>
-          <a class='nav-link active' aria-current='page' href='#'>Home</a>
+          <LinkTo
+            class='nav-link active'
+            aria-current='page'
+            @route='home.contributions'
+          >Contributions</LinkTo>
         </li>
+
         <li class='nav-item'>
-          <a class='nav-link' href='#'>Features</a>
+          <LinkTo
+            class='nav-link active'
+            aria-current='page'
+            @route='home.users'
+          >Users</LinkTo>
         </li>
+
         <li class='nav-item'>
-          <a class='nav-link' href='#'>Pricing</a>
+          <LinkTo
+            class='nav-link active'
+            aria-current='page'
+            @route='home.account'
+          >Account settings</LinkTo>
         </li>
       </ul>
       <span class='navbar-text'>

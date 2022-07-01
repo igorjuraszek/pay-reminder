@@ -1,13 +1,8 @@
 {{page-title 'Contributions'}}
 <h1>Contributions</h1>
-{{#each this.model as |contribution|}}
-  <h1>{{contribution.title}}</h1>
-  {{#each contribution.contributors as |contribution-user|}}
-    <h1>{{contribution-user.contributor.username}}
-      -
-      {{contribution-user.amount}}</h1>
-  {{/each}}
-{{/each}}
+
+<Contributions::List @contributions={{this.model}} />
+
 <div class='details'>
   <div class='text-center'>
     <h2>Nazwa zbiorki</h2>
