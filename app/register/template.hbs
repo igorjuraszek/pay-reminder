@@ -1,3 +1,55 @@
 {{page-title 'Register'}}
 <h1>Register</h1>
+
+<div class='container'>
+  <form {{on 'submit' this.onSubmit}}>
+
+    <div class='mb-3 row'>
+      <label for='username' class='col-sm-2 col-form-label'>Username</label>
+      <div class='col-sm-10'>
+        <input
+          type='text'
+          class='form-control'
+          id='username'
+          placeholder='username'
+          {{on 'input' this.onLoginChange}}
+        />
+      </div>
+    </div>
+    <div class='mb-3 row'>
+      <label for='email' class='col-sm-2 col-form-label'>Email</label>
+      <div class='col-sm-10'>
+        <input
+          type='text'
+          class='form-control'
+          id='email'
+          placeholder='email'
+          {{on 'input' this.onEmailChange}}
+        />
+      </div>
+    </div>
+    <div class='mb-3 row'>
+      <label
+        for='inputPassword'
+        class='col-sm-2 col-form-label'
+      >Password</label>
+      <div class='col-sm-10'>
+        <input
+          type='password'
+          class='form-control'
+          id='inputPassword'
+          placeholder='password'
+          {{on 'input' this.onPasswordChange}}
+        />
+      </div>
+    </div>
+    <div class='mb-3 row'>
+      <button type='submit' class='btn btn-primary'>Register</button>
+    </div>
+  </form>
+  <div>
+    <span>Mam juz konto. </span><LinkTo @route='login'>Zaloguj.</LinkTo>
+  </div>
+</div>
+
 {{outlet}}
