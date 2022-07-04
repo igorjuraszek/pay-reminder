@@ -1,8 +1,11 @@
 import Controller from '@ember/controller';
+import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
 import { tracked } from '@glimmer/tracking';
 
 export default class LoginController extends Controller {
+  @service session;
+  @service store;
   @tracked loginValue;
   @tracked passwordValue;
 
@@ -17,5 +20,9 @@ export default class LoginController extends Controller {
   }
 
   @action
-  async onSubmit(event) {}
+  async onSubmit(event) {
+    event.preventDefault();
+    const { loginValue, passwordValue } = this;
+    await this.session.loginUser(loginValue, passwordValue);
+  }
 }

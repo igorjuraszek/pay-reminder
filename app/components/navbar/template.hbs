@@ -45,9 +45,11 @@
           >Account settings</LinkTo>
         </li>
       </ul>
-      <span class='navbar-text'>
-        Navbar text with an inline element
-      </span>
+      <span
+        role='button'
+        class='nav-link'
+        {{on 'click' this.onLogout}}
+      >Logout</span>
     </div>
   </div>
 </nav>
