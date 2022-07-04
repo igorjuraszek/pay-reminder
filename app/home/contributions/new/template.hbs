@@ -1,0 +1,15 @@
+{{page-title 'New'}}
+<PowerSelect
+  @searchEnabled={{true}}
+  @options={{this.allUsers}}
+  @searchPlaceholder='Search user...'
+  @selected={{this.person}}
+  @onChange={{fn (mut this.person)}}
+  as |user|
+>
+  @{{user.username}}
+  -
+  {{user.name}}
+  {{user.surname}}
+</PowerSelect>
+{{outlet}}

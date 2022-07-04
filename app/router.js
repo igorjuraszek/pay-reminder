@@ -16,6 +16,7 @@ Router.map(function () {
     this.route('dashboard');
     this.route('contributions', function () {
       this.route('history');
+      this.route('new');
     });
     this.route('contribution', function () {
       this.route('show', { path: '/:id' });
