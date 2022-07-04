@@ -2,7 +2,7 @@ import Model, { attr, hasMany, belongsTo } from '@ember-data/model';
 
 export default class ContributionModel extends Model {
   @attr('string') title;
-  @attr('string') createdAd;
+  @attr('string') createdAt;
   @attr('string') deadline;
   @attr('string') goal;
   @attr('boolean', { defaultValue: false }) isClosed;
