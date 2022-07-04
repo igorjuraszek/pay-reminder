@@ -10,13 +10,13 @@ export default class LoginController extends Controller {
   @tracked passwordValue;
 
   @action
-  onLoginChange(event) {
-    this.loginValue = event.target.value;
+  onLoginChange({ target: { value } }) {
+    this.loginValue = value;
   }
 
   @action
-  onPasswordChange(event) {
-    this.passwordValue = event.target.value;
+  onPasswordChange({ target: { value } }) {
+    this.passwordValue = value;
   }
 
   @action
