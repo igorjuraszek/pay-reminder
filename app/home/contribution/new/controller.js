@@ -47,8 +47,6 @@ export default class HomeContributionNewController extends Controller {
 
   @action chooseUser(user) {
     this.choosenUser = user;
-    console.log(this.choosenUser.username);
-    console.log(this.contributionOwner.username);
   }
 
   @action onTitleChange({ target: { value } }) {
