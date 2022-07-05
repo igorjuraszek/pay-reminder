@@ -2,14 +2,25 @@ import Controller from '@ember/controller';
 import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
+import { sum } from 'lodash';
 
 export default class HomeContributionNewController extends Controller {
   @service session;
+  @service router;
   @service store;
   @tracked choosenUser = null;
   @tracked amount = null;
 
-  get allUsers() {
+  get currentlyAddedContributors() {
+    const currentlyAddedContributors = this.model.contributors.map(
+      (contributionRow) => {
+        return contributionRow.contributor.get('id');
+      }
+    );
+    return currentlyAddedContributors;
+  }
+
+  get usersToAdd() {
     return this.store.findAll('user');
   }
 
@@ -22,9 +33,10 @@ export default class HomeContributionNewController extends Controller {
 
   get goalOfContribution() {
     const contributorsDebts = this.model.contributors.map((contributor) => {
-      return contributor.amount;
+      return parseFloat(contributor.amount);
     });
-    return contributorsDebts;
+    const goal = sum(contributorsDebts);
+    return goal;
   }
 
   myMatcher(user, term) {
@@ -47,18 +59,38 @@ export default class HomeContributionNewController extends Controller {
     this.amount = value;
   }
 
-  @action onDelete() {}
-
-  @action onSubmit() {}
+  @action async onSubmit(event) {
+    event.preventDefault();
+    this.model.goal = this.goalOfContribution;
+    if (this.model.title && this.model.contributors.length > 0) {
+      await this.model.save();
+      for (const contributor of this.model.contributors.toArray()) {
+        await contributor.save();
+      }
+      this.router.transitionTo('home.contribution.show', this.model);
+    }
+  }
 
   @action onAddContributor() {
     let contributionUser = {
       contributor: this.choosenUser,
       contribution: this.model,
       amount: this.amount,
-      isPaid: false,
+      isPaid: this.choosenUser.get('id') === this.contributionOwner.get('id'),
     };
-    this.store.createRecord('contribution-user', contributionUser);
-    console.log(this.goalOfContribution);
+    if (
+      this.choosenUser &&
+      this.amount &&
+      !this.currentlyAddedContributors.includes(this.choosenUser.get('id'))
+    ) {
+      this.store.createRecord('contribution-user', contributionUser);
+      this.choosenUser = null;
+      this.amount = null;
+    }
+  }
+
+  @action
+  onChangePrivate({ target: { checked } }) {
+    this.model.isPrivate = checked;
   }
 }
