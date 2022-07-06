@@ -1,4 +1,13 @@
 {{page-title 'Users'}}
 <h1>Users</h1>
-<Users::List @users={{this.model}} />
+<input
+  type='text'
+  id='search'
+  placeholder='search user...'
+  {{on 'input' this.onUserSearch}}
+/>
+<Users::List
+  @users={{this.sortedUsers}}
+  @contributions={{this.model.contributions}}
+/>
 {{outlet}}

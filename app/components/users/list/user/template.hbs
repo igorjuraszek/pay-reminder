@@ -7,9 +7,19 @@
         >@{{@user.username}}</LinkTo></div>
       {{@user.name}}
       {{@user.surname}}
-      {{! <Users::List::User::Contributions /> }}
+      {{#if this.shouldBeContributionsShow}}
+        <Users::List::User::Contributions
+          @contributions={{this.contributionsToShow}}
+        />
+      {{/if}}
     </div>
-    <span class='badge bg-primary rounded-pill'>1</span>
+    {{#if this.contributionsToShow.length}}
+      <span
+        role='button'
+        class='badge bg-primary rounded-pill'
+        {{on 'click' this.onContributionsShow}}
+      >{{this.contributionsToShow.length}}</span>
+    {{/if}}
   </li>
 
 </ul>

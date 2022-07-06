@@ -56,6 +56,7 @@ export default class HomeContributionNewController extends Controller {
 
   @action async onSubmit(event) {
     event.preventDefault();
+    this.model.owner = this.contributionOwner;
     this.model.goal = this.goalOfContribution;
     if (this.model.title && this.model.contributors.length > 0) {
       await this.model.save();
