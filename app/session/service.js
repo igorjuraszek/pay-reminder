@@ -32,7 +32,6 @@ export default class SessionService extends Service {
   async setCurrentUser() {
     const userId = this.loggedAs.get('id');
     const user = await this.store.findRecord('user', userId);
-    console.log(user.username);
     this.currentUser = user;
   }
 }

@@ -1,0 +1,10 @@
+<tr class='table-primary'>
+  <td>{{@contributionUser.contributor.username}}</td>
+  <td>{{@contributionUser.amount}} PLN</td>
+  <td></td>
+  <td><button
+      type='button'
+      class='btn btn-link card-link'
+      {{on 'click' this.onDeleteContributor}}
+    >Delete</button></td>
+</tr>
