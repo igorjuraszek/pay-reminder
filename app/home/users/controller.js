@@ -12,15 +12,16 @@ export default class HomeUsersController extends Controller {
   }
 
   get filteredUsers() {
-    const filtered = this.model.users.filter((user) => {
-      return `${user.username.toLowerCase()} ${user.name.toLowerCase()} ${user.surname.toLowerCase()}`.includes(
+    const filtered = this.model.users.filter(({ username, name, surname }) => {
+      return `${username.toLowerCase()} ${name.toLowerCase()} ${surname.toLowerCase()}`.includes(
         this.inputValue.toLowerCase()
       );
     });
     return filtered;
   }
 
-  @action onUserSearch({ target: { value } }) {
+  @action
+  onUserSearch({ target: { value } }) {
     this.inputValue = value;
   }
 }
