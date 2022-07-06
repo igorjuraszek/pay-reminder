@@ -12,12 +12,9 @@ export default class HomeContributionNewController extends Controller {
   @tracked amount = null;
 
   get currentlyAddedContributors() {
-    const currentlyAddedContributors = this.model.contributors.map(
-      (contributionRow) => {
-        return contributionRow.contributor.get('id');
-      }
+    return this.model.contributors.map(({ contributor }) =>
+      contributor.get('id')
     );
-    return currentlyAddedContributors;
   }
 
   get usersToAdd() {
@@ -32,9 +29,9 @@ export default class HomeContributionNewController extends Controller {
   }
 
   get goalOfContribution() {
-    const contributorsDebts = this.model.contributors.map((contributor) => {
-      return parseFloat(contributor.amount);
-    });
+    const contributorsDebts = this.model.contributors.map(({ amount }) =>
+      parseFloat(amount)
+    );
     const goal = sum(contributorsDebts);
     return goal;
   }

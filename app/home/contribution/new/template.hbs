@@ -20,7 +20,6 @@
           <input
             class='form-check-input'
             type='checkbox'
-            value=''
             id='checkIsPrivate'
             {{on 'change' this.onChangePrivate}}
           />
@@ -30,7 +29,6 @@
         </div>
       </div>
 
-      {{! template-lint-disable table-groups }}
       <table class='table'>
         <thead>
           <tr>
@@ -96,5 +94,3 @@
   </form>
 
 </div>
-
-{{outlet}}
