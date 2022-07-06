@@ -1,6 +1,8 @@
 <ul>
-  <li>abba</li>
-  <li>abba</li>
-  <li>abba</li>
+  {{#each @contributions as |contribution|}}
+    <Users::List::User::Contributions::ContributionTitle
+      @contribution={{contribution}}
+    />
+  {{/each}}
 </ul>
 {{yield}}
