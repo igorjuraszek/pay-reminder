@@ -3,6 +3,7 @@ import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { sum } from 'lodash';
+import { endOfDay } from 'date-fns';
 
 export default class HomeContributionNewController extends Controller {
   @service session;
@@ -58,6 +59,7 @@ export default class HomeContributionNewController extends Controller {
     event.preventDefault();
     this.model.owner = this.contributionOwner;
     this.model.goal = this.goalOfContribution;
+    this.model.deadline = endOfDay(new Date());
     if (this.model.title && this.model.contributors.length > 0) {
       await this.model.save();
       for (const contributor of this.model.contributors.toArray()) {
@@ -68,17 +70,17 @@ export default class HomeContributionNewController extends Controller {
   }
 
   @action onAddContributor() {
-    let contributionUser = {
-      contributor: this.choosenUser,
-      contribution: this.model,
-      amount: this.amount,
-      isPaid: this.choosenUser.get('id') === this.contributionOwner.get('id'),
-    };
     if (
       this.choosenUser &&
       this.amount &&
       !this.currentlyAddedContributors.includes(this.choosenUser.get('id'))
     ) {
+      let contributionUser = {
+        contributor: this.choosenUser,
+        contribution: this.model,
+        amount: this.amount,
+        isPaid: this.choosenUser.get('id') === this.contributionOwner.get('id'),
+      };
       this.store.createRecord('contribution-user', contributionUser);
       this.choosenUser = null;
       this.amount = null;
