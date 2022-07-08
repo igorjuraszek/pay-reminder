@@ -3,12 +3,13 @@ import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { sum } from 'lodash';
-import { endOfDay } from 'date-fns';
+import { endOfDay, isBefore } from 'date-fns';
 
 export default class HomeContributionNewController extends Controller {
   @service session;
   @service router;
   @service store;
+  @tracked deadline;
   @tracked choosenUser = null;
   @tracked amount = null;
 
@@ -37,6 +38,10 @@ export default class HomeContributionNewController extends Controller {
     return goal;
   }
 
+  get currentTime() {
+    return new Date();
+  }
+
   myMatcher(user, term) {
     return `${user.username.toLowerCase()} ${user.name.toLowerCase()} ${user.surname.toLowerCase()}`.indexOf(
       term.toLowerCase()
@@ -59,8 +64,12 @@ export default class HomeContributionNewController extends Controller {
     event.preventDefault();
     this.model.owner = this.contributionOwner;
     this.model.goal = this.goalOfContribution;
-    this.model.deadline = endOfDay(new Date());
-    if (this.model.title && this.model.contributors.length > 0) {
+    this.model.deadline = this.deadline;
+    if (
+      this.model.title &&
+      this.model.contributors.length > 0 &&
+      isBefore(this.currentTime, this.deadline)
+    ) {
       await this.model.save();
       for (const contributor of this.model.contributors.toArray()) {
         await contributor.save();
@@ -90,5 +99,10 @@ export default class HomeContributionNewController extends Controller {
   @action
   onChangePrivate({ target: { checked } }) {
     this.model.isPrivate = checked;
+  }
+
+  @action
+  onChangeDeadline({ target: { value } }) {
+    this.deadline = endOfDay(new Date(value));
   }
 }

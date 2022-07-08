@@ -101,40 +101,40 @@ export default class ApplicationRoute extends Route {
     const contribution1 = {
       id: 1,
       title: 'Pizza',
-      createdAd: '21-05-2022 20:00',
-      deadline: '22-12-2022 21:00',
+      createdAd: new Date(),
+      deadline: new Date(2022, 12, 21, 10, 0, 0),
       owner: user4Model,
       goal: '120',
     };
     const contribution2 = {
       id: 2,
       title: 'Dzień nauczyciela',
-      createdAd: '20-05-2022 20:00',
-      deadline: '22-12-2022 21:00',
+      createdAd: new Date(),
+      deadline: new Date(2022, 12, 21, 10, 0, 0),
       owner: user5Model,
       goal: '250',
     };
     const contribution3 = {
       id: 3,
       title: 'Prezent dla Wojtka',
-      createdAd: '18-05-2022 20:00',
-      deadline: '22-12-2022 21:00',
+      createdAd: new Date(),
+      deadline: new Date(2022, 12, 21, 10, 0, 0),
       owner: user5Model,
       goal: '130',
     };
     const contribution4 = {
       id: 4,
       title: 'Paliwo za czerwiec',
-      createdAd: '27-05-2022 20:00',
-      deadline: '22-12-2022 21:00',
+      createdAd: new Date(),
+      deadline: new Date(2022, 12, 21, 10, 0, 0),
       owner: user6Model,
       goal: '660',
     };
     const contribution5 = {
       id: 5,
       title: 'Wyjazd do pragi',
-      createdAd: '28-05-2022 20:00',
-      deadline: '22-12-2022 21:00',
+      createdAd: new Date(),
+      deadline: new Date(2022, 12, 21, 10, 0, 0),
       owner: user7Model,
       goal: '1560',
     };

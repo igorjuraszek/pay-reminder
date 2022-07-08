@@ -1,6 +1,6 @@
-<tr class={{if this.isPaidByUser 'table-success' 'table-danger'}}>
+<tr class={{this.rowLabelClass}}>
   <td>{{@contributionUser.contributor.username}}</td>
   <td>{{@contributionUser.amount}} PLN</td>
-  <td>{{if this.isPaidByUser 'Paid' 'Not paid'}}</td>
+  <td>{{this.statusOfPayment}}</td>
 </tr>
 {{yield}}
