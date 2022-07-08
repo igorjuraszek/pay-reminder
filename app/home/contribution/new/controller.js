@@ -31,7 +31,11 @@ export default class HomeContributionNewController extends Controller {
   }
 
   get goalOfContribution() {
-    const contributorsDebts = this.model.contributors.map(({ amount }) =>
+    const { contributors } = this.model;
+    if (contributors?.isDestroyed) {
+      return 0;
+    }
+    const contributorsDebts = contributors.map(({ amount }) =>
       parseFloat(amount)
     );
     const goal = sum(contributorsDebts);
