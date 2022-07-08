@@ -65,9 +65,11 @@ export default class HomeContributionNewController extends Controller {
     this.model.owner = this.contributionOwner;
     this.model.goal = this.goalOfContribution;
     this.model.deadline = this.deadline;
+
+    const { title, contributors } = this.model;
     if (
-      this.model.title &&
-      this.model.contributors.length > 0 &&
+      title &&
+      contributors.length > 0 &&
       isBefore(this.currentTime, this.deadline)
     ) {
       await this.model.save();
@@ -79,16 +81,22 @@ export default class HomeContributionNewController extends Controller {
   }
 
   @action onAddContributor() {
+    const {
+      choosenUser,
+      amount,
+      contributionOwner,
+      model: contribution,
+    } = this;
     if (
-      this.choosenUser &&
-      this.amount &&
-      !this.currentlyAddedContributors.includes(this.choosenUser.get('id'))
+      choosenUser &&
+      amount &&
+      !this.currentlyAddedContributors.includes(choosenUser.get('id'))
     ) {
-      let contributionUser = {
-        contributor: this.choosenUser,
-        contribution: this.model,
-        amount: this.amount,
-        isPaid: this.choosenUser.get('id') === this.contributionOwner.get('id'),
+      const contributionUser = {
+        contributor: choosenUser,
+        contribution,
+        amount,
+        isPaid: choosenUser.get('id') === contributionOwner.get('id'),
       };
       this.store.createRecord('contribution-user', contributionUser);
       this.choosenUser = null;

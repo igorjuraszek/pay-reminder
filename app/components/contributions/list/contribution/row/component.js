@@ -18,23 +18,13 @@ export default class ContributionsListContributionRowComponent extends Component
     return !isBefore(this.currentTime, this.currentContribution.deadline);
   }
 
-  get rowLabelClass() {
+  get payment() {
     if (this.isPaidByUser) {
-      return 'table-success';
+      return { class: 'table-success', label: 'Paid' };
     }
     if (!this.isDeadlineOverdue) {
-      return 'table-danger';
+      return { class: 'table-danger', label: 'Debt' };
     }
-    return 'table-warning';
-  }
-
-  get statusOfPayment() {
-    if (this.isPaidByUser) {
-      return 'Paid';
-    }
-    if (!this.isDeadlineOverdue) {
-      return 'Debt';
-    }
-    return 'Waiting for payment';
+    return { class: 'table-warning', label: 'Waiting for payment' };
   }
 }

@@ -1,11 +1,11 @@
-<tr class={{this.rowLabelClass}}>
+<tr class={{this.payment.class}}>
   <td>{{@contributionUser.contributor.username}}</td>
   <td>{{@contributionUser.amount}} PLN</td>
   {{#if this.isPaidByUser}}
-    <td>{{this.statusOfPayment}}</td>
+    <td>{{this.payment.label}}</td>
     <td></td>
   {{else}}
-    <td>{{this.statusOfPayment}}</td>
+    <td>{{this.payment.label}}</td>
     <td><a href=''>Confirm payment</a> or <a href=''>Remind</a></td>
   {{/if}}
 </tr>

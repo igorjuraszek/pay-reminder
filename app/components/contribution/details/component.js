@@ -7,10 +7,7 @@ export default class ContributionDetailsComponent extends Component {
   }
 
   get statusOfContribution() {
-    if (!this.args.contribution.isClosed) {
-      return 'open';
-    }
-    return 'closed';
+    return !this.args.contribution.isClosed ? 'open' : 'closed';
   }
 
   get deadlineFormat() {

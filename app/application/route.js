@@ -102,7 +102,7 @@ export default class ApplicationRoute extends Route {
       id: 1,
       title: 'Pizza',
       createdAd: new Date(),
-      deadline: new Date(2022, 12, 21, 10, 0, 0),
+      deadline: new Date('2022-12-21'),
       owner: user4Model,
       goal: '120',
     };
@@ -110,7 +110,7 @@ export default class ApplicationRoute extends Route {
       id: 2,
       title: 'Dzień nauczyciela',
       createdAd: new Date(),
-      deadline: new Date(2022, 12, 21, 10, 0, 0),
+      deadline: new Date('2022-12-21'),
       owner: user5Model,
       goal: '250',
     };
@@ -118,7 +118,7 @@ export default class ApplicationRoute extends Route {
       id: 3,
       title: 'Prezent dla Wojtka',
       createdAd: new Date(),
-      deadline: new Date(2022, 12, 21, 10, 0, 0),
+      deadline: new Date('2022-12-21'),
       owner: user5Model,
       goal: '130',
     };
@@ -126,7 +126,7 @@ export default class ApplicationRoute extends Route {
       id: 4,
       title: 'Paliwo za czerwiec',
       createdAd: new Date(),
-      deadline: new Date(2022, 12, 21, 10, 0, 0),
+      deadline: new Date('2022-12-21'),
       owner: user6Model,
       goal: '660',
     };
@@ -134,7 +134,7 @@ export default class ApplicationRoute extends Route {
       id: 5,
       title: 'Wyjazd do pragi',
       createdAd: new Date(),
-      deadline: new Date(2022, 12, 21, 10, 0, 0),
+      deadline: new Date('2022-12-21'),
       owner: user7Model,
       goal: '1560',
     };
