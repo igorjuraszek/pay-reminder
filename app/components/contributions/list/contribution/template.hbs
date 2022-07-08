@@ -9,7 +9,14 @@
           @route='home.contribution.show'
           @model={{@contribution}}
         >{{@contribution.title}}</LinkTo></h5>
-      <p class='card-text'>Owner: {{@contribution.owner.username}}</p>
+
+      <p class='card-text'>Owner:
+        <LinkTo
+          @route='home.user.show'
+          @model={{@contribution.owner}}
+        >{{@contribution.owner.username}}</LinkTo>
+      </p>
+      <p class='card-text'>Status: {{this.statusOfContribution}}</p>
 
       <table class='table'>
         <thead>
@@ -23,6 +30,7 @@
           {{#each @contribution.contributors as |contributionUser|}}
             <Contributions::List::Contribution::Row
               @contributionUser={{contributionUser}}
+              @contribution={{@contribution}}
             />
           {{/each}}
         </tbody>
@@ -40,7 +48,8 @@
       >details</LinkTo>
     </div>
     <div class='card-footer text-muted'>
-      #2 days remaining
+      Deadline:
+      {{this.daysToGo}}
     </div>
   </div>
 </div>

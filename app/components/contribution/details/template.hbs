@@ -2,11 +2,10 @@
   <div class='text-center'>
     <h2>{{@contribution.title}}</h2>
     <h3>Owner: {{@contribution.owner.username}}</h3>
-    <h4>Deadline: {{@contribution.deadline}}</h4>
-    <h4>Status: {{@contribution.isClosed}}</h4>
+    <h4>Deadline: {{this.deadlineFormat}}</h4>
+    <h4>Status: {{this.statusOfContribution}}</h4>
   </div>
 
-  {{! template-lint-disable table-groups }}
   <table class='table'>
     <thead>
       <tr>
@@ -18,7 +17,10 @@
     </thead>
     <tbody>
       {{#each @contribution.contributors as |contributionUser|}}
-        <Contribution::Details::Row @contributionUser={{contributionUser}} />
+        <Contribution::Details::Row
+          @contributionUser={{contributionUser}}
+          @contribution={{@contribution}}
+        />
       {{/each}}
     </tbody>
     <tfoot>

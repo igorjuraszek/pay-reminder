@@ -27,6 +27,12 @@
             Private contribution
           </label>
         </div>
+        <label for='deadline'>Deadline:</label>
+        <input
+          type='date'
+          id='deadline'
+          {{on 'change' this.onChangeDeadline}}
+        />
       </div>
 
       <table class='table'>
