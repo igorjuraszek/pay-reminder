@@ -20,8 +20,8 @@ export default class ContributionsListContributionComponent extends Component {
   get daysToGo() {
     if (isBefore(this.currentTime, this.currentContribution.deadline)) {
       const difference = differenceInDays(
-        this.currentTime,
-        this.currentContribution.deadline
+        this.currentContribution.deadline,
+        this.currentTime
       );
       return `${difference} day(s)`;
     }
