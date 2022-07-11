@@ -1,0 +1,156 @@
+<div class='container-xl px-4 mt-4'>
+
+  <div class='col-xl-8'>
+    <!-- Account details card-->
+    <div class='card mb-4'>
+      <div class='card-header'>Account Details</div>
+      <div class='card-body'>
+        <form>
+          <!-- Form Row-->
+          <div class='row gx-3 mb-3'>
+            <!-- Form Group (first name)-->
+            <div class='col-md-6'>
+              <label class='small mb-1' for='inputFirstName'>First name</label>
+              <input
+                class='form-control'
+                id='inputFirstName'
+                type='text'
+                placeholder='Enter your first name'
+                value={{@currentUser.name}}
+                disabled={{this.shouldBeLocked}}
+                {{on 'input' this.onChangeName}}
+              />
+            </div>
+            <!-- Form Group (last name)-->
+            <div class='col-md-6'>
+              <label class='small mb-1' for='inputLastName'>Last name</label>
+              <input
+                class='form-control'
+                id='inputLastName'
+                type='text'
+                placeholder='Enter your last name'
+                value={{@currentUser.surname}}
+                disabled={{this.shouldBeLocked}}
+                {{on 'input' this.onChangeSurname}}
+              />
+            </div>
+          </div>
+          <!-- Form Group (username)-->
+          <div class='mb-3'>
+            <label class='small mb-1' for='inputUsername'>Username</label>
+            <input
+              class='form-control'
+              id='inputUsername'
+              type='text'
+              placeholder='Enter your username'
+              value={{@currentUser.username}}
+              disabled={{this.shouldBeLocked}}
+              {{on 'input' this.onChangeUsername}}
+            />
+          </div>
+          <!-- Form Group (username)-->
+          <div class='mb-3'>
+            <label class='small mb-1' for='inputPassword'>Password</label>
+            <input
+              class='form-control'
+              id='inputPassword'
+              type='password'
+              placeholder='Enter new password'
+              value={{@currentUser.password}}
+              disabled={{this.shouldBeLocked}}
+              {{on 'input' this.onChangePassword}}
+            />
+          </div>
+
+          <div class='mb-3'>
+            <label class='small mb-1' for='inputEmail'>Email</label>
+            <input
+              class='form-control'
+              id='inputEmail'
+              type='text'
+              placeholder='Enter your email'
+              value={{@currentUser.email}}
+              disabled={{this.shouldBeLocked}}
+              {{on 'input' this.onChangeEmail}}
+            />
+          </div>
+
+          <div class='mb-3'>
+            <label class='small mb-1' for='inputPhoneNumber'>Phone number</label>
+            <input
+              class='form-control'
+              id='inputPhoneNumber'
+              type='text'
+              placeholder='Enter your phone number for Blik transactions'
+              value={{@currentUser.blikNumber}}
+              disabled={{this.shouldBeLocked}}
+              {{on 'input' this.onChangePhoneNumber}}
+            />
+          </div>
+
+          <div class='mb-3'>
+            <label class='small mb-1' for='inputBankAccount'>Bank Account number</label>
+            <input
+              class='form-control'
+              id='inputBankAccount'
+              type='text'
+              placeholder='Enter your bank account number'
+              value={{@currentUser.bankAccountNumber}}
+              disabled={{this.shouldBeLocked}}
+              {{on 'input' this.onChangeBankAccount}}
+            />
+          </div>
+
+          <div class='mb-3'>
+            <label class='small mb-1' for='inputRevolutUsername'>Revoult
+              username</label>
+            <input
+              class='form-control'
+              id='inputRevolutUsername'
+              type='text'
+              placeholder='Enter your Revolut username'
+              value={{@currentUser.revolutUsername}}
+              disabled={{this.shouldBeLocked}}
+              {{on 'input' this.onChangeRevolut}}
+            />
+          </div>
+
+          <div class='mb-3'>
+            <label class='small mb-1' for='inputPayPalUsername'>PayPal username</label>
+            <input
+              class='form-control'
+              id='inputPayPalUsername'
+              type='text'
+              placeholder='Enter your PayPal username'
+              value={{@currentUser.paypalUsername}}
+              disabled={{this.shouldBeLocked}}
+              {{on 'input' this.onChangePayPal}}
+            />
+          </div>
+          <!-- Save changes button-->
+          {{#if this.editMode}}
+            <button
+              class='btn btn-danger'
+              type='button'
+              {{on 'click' this.discardChanges}}
+            >Cancel</button>
+            <button
+              class='btn btn-primary'
+              type='button'
+              disabled={{this.shouldBeButtonDisabled}}
+              {{on 'click' this.onSubmit}}
+            >Save changes</button>
+          {{else}}
+            <button
+              class='btn btn-primary'
+              type='button'
+              {{on 'click' this.onChangeMode}}
+            >Edit</button>
+          {{/if}}
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{yield}}
