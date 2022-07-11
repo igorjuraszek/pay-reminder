@@ -11,10 +11,10 @@ export default class HomeContributionNewRoute extends Route {
 
   @action
   willTransition() {
+    // eslint-disable-next-line ember/no-controller-access-in-routes
     const modelRecord = this.controller.get('model');
 
     if (modelRecord.get('hasDirtyAttributes')) {
-      debugger;
       modelRecord.destroyRecord();
     }
   }
