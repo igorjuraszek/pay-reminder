@@ -15,7 +15,7 @@
                 placeholder='Enter your first name'
                 value={{@currentUser.name}}
                 disabled={{this.shouldBeLocked}}
-                {{on 'input' this.onChangeName}}
+                {{on 'input' (fn this.onPropertyChange 'name')}}
               />
             </div>
             <div class='col-md-6'>
@@ -27,7 +27,7 @@
                 placeholder='Enter your last name'
                 value={{@currentUser.surname}}
                 disabled={{this.shouldBeLocked}}
-                {{on 'input' this.onChangeSurname}}
+                {{on 'input' (fn this.onPropertyChange 'surname')}}
               />
             </div>
           </div>
@@ -40,7 +40,7 @@
               placeholder='Enter your username'
               value={{@currentUser.username}}
               disabled={{this.shouldBeLocked}}
-              {{on 'input' this.onChangeUsername}}
+              {{on 'input' (fn this.onPropertyChange 'username')}}
             />
           </div>
           <div class='mb-3'>
@@ -52,7 +52,7 @@
               placeholder='Enter new password'
               value={{@currentUser.password}}
               disabled={{this.shouldBeLocked}}
-              {{on 'input' this.onChangePassword}}
+              {{on 'input' (fn this.onPropertyChange 'password')}}
             />
           </div>
 
@@ -65,7 +65,7 @@
               placeholder='Enter your email'
               value={{@currentUser.email}}
               disabled={{this.shouldBeLocked}}
-              {{on 'input' this.onChangeEmail}}
+              {{on 'input' (fn this.onPropertyChange 'email')}}
             />
           </div>
 
@@ -78,7 +78,7 @@
               placeholder='Enter your phone number for Blik transactions'
               value={{@currentUser.blikNumber}}
               disabled={{this.shouldBeLocked}}
-              {{on 'input' this.onChangePhoneNumber}}
+              {{on 'input' (fn this.onPropertyChange 'blikNumber')}}
             />
           </div>
 
@@ -91,7 +91,7 @@
               placeholder='Enter your bank account number'
               value={{@currentUser.bankAccountNumber}}
               disabled={{this.shouldBeLocked}}
-              {{on 'input' this.onChangeBankAccount}}
+              {{on 'input' (fn this.onPropertyChange 'bankAccountNumber')}}
             />
           </div>
 
@@ -105,7 +105,7 @@
               placeholder='Enter your Revolut username'
               value={{@currentUser.revolutUsername}}
               disabled={{this.shouldBeLocked}}
-              {{on 'input' this.onChangeRevolut}}
+              {{on 'input' (fn this.onPropertyChange 'revolutUsername')}}
             />
           </div>
 
@@ -118,7 +118,7 @@
               placeholder='Enter your PayPal username'
               value={{@currentUser.paypalUsername}}
               disabled={{this.shouldBeLocked}}
-              {{on 'input' this.onChangePayPal}}
+              {{on 'input' (fn this.onPropertyChange 'paypalUsername')}}
             />
           </div>
           {{#if this.editMode}}

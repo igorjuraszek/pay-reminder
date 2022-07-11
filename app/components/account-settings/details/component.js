@@ -20,88 +20,22 @@ export default class AccountSettingsDetailsComponent extends Component {
   }
 
   get isFormFilledCorrectly() {
-    const { currentUser } = this;
-    const isRequiredInputsFilled = Boolean(
-      currentUser.name &&
-        currentUser.surname &&
-        currentUser.username &&
-        currentUser.password &&
-        currentUser.email
-    );
-    return isRequiredInputsFilled;
+    const { name, surname, username, password, email } = this.currentUser;
+    return Boolean(name && surname && username && password && email);
   }
 
   @action
-  onChangeName({ target: { value } }) {
-    this.currentUser.name = value;
-  }
-
-  @action
-  onChangeSurname({ target: { value } }) {
-    this.currentUser.surname = value;
-  }
-
-  @action
-  onChangeUsername({ target: { value } }) {
-    this.currentUser.username = value;
-  }
-
-  @action
-  onChangePassword({ target: { value } }) {
-    this.currentUser.password = value;
-  }
-
-  @action
-  onChangeEmail({ target: { value } }) {
-    if (value === '') {
-      this.currentUser.email = null;
-    } else {
-      this.currentUser.email = value;
-    }
-  }
-
-  @action
-  onChangeBankAccount({ target: { value } }) {
-    if (value === '') {
-      this.currentUser.bankAccountNumber = null;
-    } else {
-      this.currentUser.bankAccountNumber = value;
-    }
-  }
-
-  @action
-  onChangePhoneNumber({ target: { value } }) {
-    if (value === '') {
-      this.currentUser.blikNumber = null;
-    } else {
-      this.currentUser.blikNumber = value;
-    }
-  }
-
-  @action
-  onChangeRevolut({ target: { value } }) {
-    if (value === '') {
-      this.currentUser.revolutUsername = null;
-    } else {
-      this.currentUser.revolutUsername = value;
-    }
-  }
-
-  @action
-  onChangePayPal({ target: { value } }) {
-    if (value === '') {
-      this.currentUser.paypalUsername = null;
-    } else {
-      this.currentUser.paypalUsername = value;
-    }
+  onPropertyChange(key, { target: { value } }) {
+    this.currentUser[key] = value || null;
   }
 
   @action
   async onSubmit() {
-    if (this.isFormFilledCorrectly) {
-      await this.currentUser.save();
-      this.editMode = !this.editMode;
+    if (!this.isFormFilledCorrectly) {
+      return;
     }
+    await this.currentUser.save();
+    this.editMode = !this.editMode;
   }
 
   @action
