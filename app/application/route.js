@@ -110,7 +110,7 @@ export default class ApplicationRoute extends Route {
       id: 2,
       title: 'Dzień nauczyciela',
       createdAd: new Date(),
-      deadline: new Date('2022-12-21'),
+      deadline: new Date('2021-12-21'),
       owner: user5Model,
       goal: '250',
     };
@@ -120,6 +120,7 @@ export default class ApplicationRoute extends Route {
       createdAd: new Date(),
       deadline: new Date('2022-12-21'),
       owner: user5Model,
+      isClosed: true,
       goal: '130',
     };
     const contribution4 = {
