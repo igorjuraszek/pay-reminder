@@ -9,6 +9,7 @@ export default class HomeAccountRoute extends Route {
     const users = this.store.findAll('user');
     return users;
   }
+
   @action
   willTransition() {
     // eslint-disable-next-line ember/no-controller-access-in-routes
