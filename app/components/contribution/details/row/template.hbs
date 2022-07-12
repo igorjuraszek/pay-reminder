@@ -6,6 +6,17 @@
     <td></td>
   {{else}}
     <td>{{this.payment.label}}</td>
-    <td><a href=''>Confirm payment</a> or <a href=''>Remind</a></td>
+    <td>
+      {{#if this.amIOwner}}
+        <Contribution::Details::Row::Actions
+          @receiver={{@contributionUser.contributor}}
+          @contribution={{@contribution}}
+          @owner={{@contribution.owner.username}}
+          @debt={{@contributionUser}}
+          @deadline={{@deadlineFormat}}
+        />
+      {{/if}}
+    </td>
+
   {{/if}}
 </tr>

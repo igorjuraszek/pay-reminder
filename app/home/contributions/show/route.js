@@ -5,8 +5,8 @@ export default class HomeContributionsShowRoute extends Route {
   @service store;
   @service session;
 
-  model() {
-    return this.myContributions();
+  async model() {
+    return await this.myContributions();
   }
 
   async myContributions() {

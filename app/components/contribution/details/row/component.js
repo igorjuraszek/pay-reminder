@@ -1,7 +1,9 @@
 import Component from '@glimmer/component';
 import { isBefore } from 'date-fns';
-
+import { inject as service } from '@ember/service';
 export default class ContributionDetailsRowComponent extends Component {
+  @service session;
+
   get currentContributor() {
     return this.args.contributionUser;
   }
@@ -16,6 +18,13 @@ export default class ContributionDetailsRowComponent extends Component {
 
   get isDeadlineOverdue() {
     return !isBefore(this.currentTime, this.currentContribution.deadline);
+  }
+
+  get amIOwner() {
+    return (
+      this.currentContribution.owner.get('id') ===
+      this.session.currentUser.get('id')
+    );
   }
 
   get payment() {

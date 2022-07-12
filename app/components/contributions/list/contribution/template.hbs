@@ -27,12 +27,19 @@
           </tr>
         </thead>
         <tbody>
-          {{#each @contribution.contributors as |contributionUser|}}
+          {{#if this.shouldBeContributionHidden}}
             <Contributions::List::Contribution::Row
-              @contributionUser={{contributionUser}}
+              @contributionUser={{this.myDebt}}
               @contribution={{@contribution}}
             />
-          {{/each}}
+          {{else}}
+            {{#each @contribution.contributors as |contributionUser|}}
+              <Contributions::List::Contribution::Row
+                @contributionUser={{contributionUser}}
+                @contribution={{@contribution}}
+              />
+            {{/each}}
+          {{/if}}
         </tbody>
         <tfoot>
           <tr>
