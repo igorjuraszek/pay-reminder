@@ -25,9 +25,9 @@ export default class ContributionDetailsRowActionsComponent extends Component {
 
   async updateStatusOfContribution() {
     const { contribution } = this.args;
-    const unpaidDebts = contribution.contributors.filter((debt) => {
-      return !debt.isPaid;
-    }).length;
+    const unpaidDebts = contribution.contributors.filter(
+      ({ isPaid }) => !isPaid
+    ).length;
     if (!unpaidDebts) {
       contribution.isClosed = true;
       await contribution.save();

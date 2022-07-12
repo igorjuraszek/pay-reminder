@@ -23,14 +23,11 @@ export default class ContributionDetailsComponent extends Component {
   }
 
   get myDebt() {
-    return this.currentContribution.contributors.filter((contributionUser) => {
-      return (
-        contributionUser.contributor.get('id') ===
-        this.session.currentUser.get('id')
-      );
-    }).firstObject;
+    return this.currentContribution.contributors.filter(
+      ({ contributor }) =>
+        contributor.get('id') === this.session.currentUser.get('id')
+    ).firstObject;
   }
-
   get deadlineFormat() {
     const contribution = this.currentContribution.deadline;
     return format(contribution, 'dd-MM-yyyy');
