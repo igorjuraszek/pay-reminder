@@ -17,7 +17,7 @@ export default class ContributionDetailsRowComponent extends Component {
   }
 
   get isDeadlineOverdue() {
-    return !isBefore(this.currentTime, this.currentContribution.deadline);
+    return !isBefore(new Date(), this.currentContribution.deadline);
   }
 
   get amIOwner() {
@@ -31,7 +31,7 @@ export default class ContributionDetailsRowComponent extends Component {
     if (this.isPaidByUser) {
       return { class: 'table-success', label: 'Paid' };
     }
-    if (!this.isDeadlineOverdue) {
+    if (this.isDeadlineOverdue) {
       return { class: 'table-danger', label: 'Debt' };
     }
     return { class: 'table-warning', label: 'Waiting for payment' };
