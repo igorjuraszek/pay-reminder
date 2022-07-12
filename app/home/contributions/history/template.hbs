@@ -1,1 +1,5 @@
-<Contributions::List @contributions={{this.model}} />
+{{#if this.model.length}}
+  <Contributions::List @contributions={{this.model}} />
+{{else}}
+  no contributions found
+{{/if}}

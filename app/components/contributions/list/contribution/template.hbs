@@ -1,9 +1,7 @@
 <div class='mx-auto w-75 p-3'>
 
   <div class='card text-center'>
-    <div class='card-header'>
-      #Group: My contributions
-    </div>
+
     <div class='card-body'>
       <h5 class='card-title'><LinkTo
           @route='home.contribution.show'
@@ -27,12 +25,19 @@
           </tr>
         </thead>
         <tbody>
-          {{#each @contribution.contributors as |contributionUser|}}
+          {{#if this.shouldBeContributionHidden}}
             <Contributions::List::Contribution::Row
-              @contributionUser={{contributionUser}}
+              @contributionUser={{this.myDebt}}
               @contribution={{@contribution}}
             />
-          {{/each}}
+          {{else}}
+            {{#each @contribution.contributors as |contributionUser|}}
+              <Contributions::List::Contribution::Row
+                @contributionUser={{contributionUser}}
+                @contribution={{@contribution}}
+              />
+            {{/each}}
+          {{/if}}
         </tbody>
         <tfoot>
           <tr>

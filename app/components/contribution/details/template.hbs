@@ -16,12 +16,22 @@
       </tr>
     </thead>
     <tbody>
-      {{#each @contribution.contributors as |contributionUser|}}
+      {{#if this.shouldBeContributionHidden}}
         <Contribution::Details::Row
-          @contributionUser={{contributionUser}}
+          @contributionUser={{this.myDebt}}
           @contribution={{@contribution}}
+          @deadlineFormat={{this.deadlineFormat}}
         />
-      {{/each}}
+      {{else}}
+        {{#each @contribution.contributors as |contributionUser|}}
+          <Contribution::Details::Row
+            @contributionUser={{contributionUser}}
+            @contribution={{@contribution}}
+            @deadlineFormat={{this.deadlineFormat}}
+          />
+        {{/each}}
+      {{/if}}
+
     </tbody>
     <tfoot>
       <tr>

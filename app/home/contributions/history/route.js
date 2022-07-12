@@ -1,12 +1,12 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 
-export default class HomeHistoryRoute extends Route {
+export default class HomeContributionsHistoryRoute extends Route {
   @service store;
   @service session;
 
-  model() {
-    return this.myContributions();
+  async model() {
+    return await this.myContributions();
   }
 
   async myContributions() {
