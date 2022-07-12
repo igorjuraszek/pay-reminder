@@ -1,5 +1,127 @@
-{{@user.username}}
-{{@user.name}}
-{{@user.surname}}
+<div class='container-xl px-4 mt-4'>
+
+  <div class='col-xl-8'>
+    <div class='card mb-4'>
+      <div class='card-header'>Account Details</div>
+      <div class='card-body'>
+        <form>
+          <div class='row gx-3 mb-3'>
+            <div class='col-md-6'>
+              <label class='small mb-1' for='inputFirstName'>First name</label>
+              <input
+                class='form-control'
+                id='inputFirstName'
+                type='text'
+                placeholder='Enter your first name'
+                value={{@user.name}}
+                disabled='true'
+              />
+            </div>
+            <div class='col-md-6'>
+              <label class='small mb-1' for='inputLastName'>Last name</label>
+              <input
+                class='form-control'
+                id='inputLastName'
+                type='text'
+                placeholder='Enter your last name'
+                value={{@user.surname}}
+                disabled='true'
+              />
+            </div>
+          </div>
+          <div class='mb-3'>
+            <label class='small mb-1' for='inputUsername'>Username</label>
+            <input
+              class='form-control'
+              id='inputUsername'
+              type='text'
+              placeholder='Enter your username'
+              value={{@user.username}}
+              disabled='true'
+            />
+          </div>
+          <div class='mb-3'>
+            <label class='small mb-1' for='inputPassword'>Password</label>
+            <input
+              class='form-control'
+              id='inputPassword'
+              type='password'
+              placeholder='Enter new password'
+              value={{@user.password}}
+              disabled='true'
+            />
+          </div>
+
+          <div class='mb-3'>
+            <label class='small mb-1' for='inputEmail'>Email</label>
+            <input
+              class='form-control'
+              id='inputEmail'
+              type='text'
+              placeholder='Enter your email'
+              value={{@user.email}}
+              disabled='true'
+            />
+          </div>
+          {{#if @user.blikNumber}}
+            <div class='mb-3'>
+              <label class='small mb-1' for='inputPhoneNumber'>Phone number</label>
+              <input
+                class='form-control'
+                id='inputPhoneNumber'
+                type='text'
+                placeholder='Enter your phone number for Blik transactions'
+                value={{@user.blikNumber}}
+                disabled='true'
+              />
+            </div>
+          {{/if}}
+          {{#if @user.bankAccountNumber}}
+            <div class='mb-3'>
+              <label class='small mb-1' for='inputBankAccount'>Bank Account
+                number</label>
+              <input
+                class='form-control'
+                id='inputBankAccount'
+                type='text'
+                placeholder='Enter your bank account number'
+                value={{@user.bankAccountNumber}}
+                disabled='true'
+              />
+            </div>
+          {{/if}}
+          {{#if @user.revolutUsername}}
+            <div class='mb-3'>
+              <label class='small mb-1' for='inputRevolutUsername'>Revoult
+                username</label>
+              <input
+                class='form-control'
+                id='inputRevolutUsername'
+                type='text'
+                placeholder='Enter your Revolut username'
+                value={{@user.revolutUsername}}
+                disabled='true'
+              />
+            </div>
+          {{/if}}
+          {{#if @user.paypalUsername}}
+            <div class='mb-3'>
+              <label class='small mb-1' for='inputPayPalUsername'>PayPal
+                username</label>
+              <input
+                class='form-control'
+                id='inputPayPalUsername'
+                type='text'
+                placeholder='Enter your PayPal username'
+                value={{@user.paypalUsername}}
+                disabled='true'
+              />
+            </div>
+          {{/if}}
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
 
 {{yield}}
