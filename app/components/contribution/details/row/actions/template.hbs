@@ -1,5 +1,3 @@
 <span role='button' {{on 'click' this.setDebtPaid}}>Confirm payment</span>
 or
-<a
-  href="mailto:{{@receiver.email}}?subject=Overdue%20payment%20in%20contribution%20{{@contribution.title}}&body=Hello%20%40{{@receiver.username}}.%20There's%20an%20overdue%20payment%20(till%20{{@deadline}})%20for%20amount%20{{@debt.amount}}%20PLN%20to%20user%20{{@owner}}.%20Please%20pay%20ASAP!!!"
->Remind</a>
+<a href={{this.mailHref}}>Remind</a>
