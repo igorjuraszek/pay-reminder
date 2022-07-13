@@ -1,3 +1,34 @@
 {{page-title 'Dashboard'}}
 <h1>Dashboard</h1>
+
+contributions I own:
+{{this.contributionsIOwn.length}}
+contributions I belong to
+{{this.contributionsIBelongTo.length}}
+
+<div class='container'>
+  <div class='row'>
+    <div class='col-lg-6'>
+      Row 1 Col 1
+    </div>
+    <div class='col-lg-6'>
+      Row 1 Col 2
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-lg-6'>
+      Row 2 Col 1
+    </div>
+    <div class='col-lg-6'>
+      Row 2 Col 2
+    </div>
+  </div>
+</div>
+
+<PieChart @data={{this.data1}} @options={{this.options}} @design='classic' />
+
+<BarChart @data={{this.data2}} @options={{this.options}} @design='classic' />
+
+<LineChart @data={{this.data3}} @options={{this.options}} @design='classic' />
+
 {{outlet}}
