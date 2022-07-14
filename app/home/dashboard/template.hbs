@@ -3,8 +3,18 @@
 
 contributions I own:
 {{this.contributionsIOwn.length}}
-contributions I belong to
+contributions I belong to:
 {{this.contributionsIBelongTo.length}}
+all debts:
+{{this.myDebts.length}}
+active debts:
+{{this.activeDebts.length}}
+active debts amount:
+{{this.activeDebtsAmount}}
+PLN paid debts:{{this.paidDebts.length}}
+paid debts amount:
+{{this.paidDebtsAmount}}
+PLN
 
 <div class='container'>
   <div class='row'>
@@ -24,11 +34,11 @@ contributions I belong to
     </div>
   </div>
 </div>
-
+{{!-- 
 <PieChart @data={{this.data1}} @options={{this.options}} @design='classic' />
 
 <BarChart @data={{this.data2}} @options={{this.options}} @design='classic' />
 
-<LineChart @data={{this.data3}} @options={{this.options}} @design='classic' />
+<LineChart @data={{this.data3}} @options={{this.options}} @design='classic' /> --}}
 
 {{outlet}}
