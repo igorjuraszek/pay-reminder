@@ -1,3 +1,28 @@
 {{page-title 'Dashboard'}}
 <h1>Dashboard</h1>
+
+<div class='container'>
+  <div class='row'>
+    <div class='col-lg-6'>
+      <Widgets::ActiveContributionsCount
+        @activeDebts={{this.activeDebts}}
+        @paymentsIAmWaitingFor={{this.paymentsIAmWaitingFor}}
+      />
+    </div>
+    <div class='col-lg-6'>
+      <Widgets::ActiveContributionsAmount
+        @paymentsIAmWaitingForAmount={{this.paymentsIAmWaitingForAmount}}
+        @activeDebtsAmount={{this.activeDebtsAmount}}
+      />
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-lg-12'>
+      <Widgets::ContributionsByMonthStats
+        @currentYearOwnedContributions={{this.currentYearOwnedContributions}}
+      />
+    </div>
+  </div>
+</div>
+
 {{outlet}}
