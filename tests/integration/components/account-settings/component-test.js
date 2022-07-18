@@ -12,8 +12,6 @@ module('Integration | Component | account-settings/details', function (hooks) {
     const user = this.server.create('user');
     const store = this.owner.lookup('service:store');
     const userModel = await store.findRecord('user', user.id);
-    console.log(user);
-    console.log(userModel);
 
     this.set('currentUser', userModel);
 
@@ -98,7 +96,7 @@ module('Integration | Component | account-settings/details', function (hooks) {
     assert.dom('[data-test-button-save]').exists();
   });
 
-  test.skip('edit data', async function (assert) {
+  test('edit data', async function (assert) {
     await click('[data-test-button-edit]');
 
     await fillIn('[data-test-input-name]', 'Wojciech');
