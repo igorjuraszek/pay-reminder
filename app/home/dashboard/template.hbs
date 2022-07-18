@@ -1,65 +1,28 @@
 {{page-title 'Dashboard'}}
 <h1>Dashboard</h1>
 
-<div
-  class='container'
-  {{did-insert this.addListener}}
-  {{will-destroy this.removeListener}}
->
+<div class='container'>
   <div class='row'>
-    <div class='col-md-6'>
-      <Widgets::ActiveContributionsStats
-        @windowWidth={{this.windowWidth}}
-        @windowHeight={{this.windowHeight}}
+    <div class='col-lg-6'>
+      <Widgets::ActiveContributionsCount
+        @activeDebts={{this.activeDebts}}
+        @paymentsIAmWaitingFor={{this.paymentsIAmWaitingFor}}
       />
     </div>
-    <div class='col-md-6'>
-      <Widgets::ActiveContributionsStats
-        @windowWidth={{this.windowWidth}}
-        @windowHeight={{this.windowHeight}}
+    <div class='col-lg-6'>
+      <Widgets::ActiveContributionsAmount
+        @paymentsIAmWaitingForAmount={{this.paymentsIAmWaitingForAmount}}
+        @activeDebtsAmount={{this.activeDebtsAmount}}
       />
     </div>
   </div>
   <div class='row'>
-    <div class='col-md-6'>
+    <div class='col-lg-12'>
       <Widgets::ContributionsByMonthStats
-        @windowWidth={{this.windowWidth}}
-        @windowHeight={{this.windowHeight}}
+        @currentYearOwnedContributions={{this.currentYearOwnedContributions}}
       />
-    </div>
-    <div class='col-md-6'>
-      <div>
-        <p>contributions I own: {{this.contributionsIOwn.length}}</p>
-        <p>contributions I belong to: {{this.contributionsIBelongTo.length}}</p>
-        <p>all debts: {{this.myDebts.length}}</p>
-        <p>active debts: {{this.activeDebts.length}}</p>
-        <p>active debts amount: {{this.activeDebtsAmount}} PLN</p>
-        <p>paid debts:{{this.paidDebts.length}}</p>
-        <p>paid debts amount: {{this.paidDebtsAmount}} PLN</p>
-      </div>
     </div>
   </div>
 </div>
-{{!-- <Widgets::ActiveContributionsStats
-  @windowWidth={{this.windowWidth}}
-  @windowHeight={{this.windowHeight}}
-/> --}}
-{{!-- <Widgets::ClosedContributionsStats
-  @windowWidth={{this.windowWidth}}
-  @windowHeight={{this.windowHeight}}
-/>
-<Widgets::ContributionsByMonthStats
-  @windowWidth={{this.windowWidth}}
-  @windowHeight={{this.windowHeight}}
-/>
-<Widgets::TextSummary />
-
-<PieChart @data={{this.data1}} @options={{this.options}} @design='classic' />
-
-<PieChart @data={{this.data1_2}} @options={{this.options}} @design='classic' />
-
-<BarChart @data={{this.data2}} @options={{this.options}} @design='classic' />
-
-<LineChart @data={{this.data4}} @options={{this.options}} @design='classic' /> --}}
 
 {{outlet}}
