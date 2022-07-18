@@ -1,22 +1,21 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, click, fillIn, waitFor } from '@ember/test-helpers';
+import { render, click, fillIn } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
+import { setupMirage } from 'ember-cli-mirage/test-support';
 
 module('Integration | Component | account-settings/details', function (hooks) {
   setupRenderingTest(hooks);
+  setupMirage(hooks);
 
   hooks.beforeEach(async function () {
-    const user = {
-      username: 'konon17',
-      name: 'Krzysztof',
-      surname: 'Kononowicz',
-      password: 'Szkolna17',
-      email: 'kononowiczkrzysztof@bio.pl',
-      blikNumber: '123456789',
-      revolutUsername: 'konon',
-    };
-    this.set('currentUser', user);
+    const user = this.server.create('user');
+    const store = this.owner.lookup('service:store');
+    const userModel = await store.findRecord('user', user.id);
+    console.log(user);
+    console.log(userModel);
+
+    this.set('currentUser', userModel);
 
     await render(
       hbs`<AccountSettings::Details @currentUser={{this.currentUser}} />`
@@ -54,11 +53,15 @@ module('Integration | Component | account-settings/details', function (hooks) {
     assert
       .dom('[data-test-input-blik-number]')
       .hasValue(`${this.currentUser.blikNumber}`);
-    assert.dom('[data-test-input-bank-account-number]').hasValue(``);
+    assert
+      .dom('[data-test-input-bank-account-number]')
+      .hasValue(`${this.currentUser.bankAccountNumber}`);
     assert
       .dom('[data-test-input-revolut]')
       .hasValue(`${this.currentUser.revolutUsername}`);
-    assert.dom('[data-test-input-paypal]').hasValue(``);
+    assert
+      .dom('[data-test-input-paypal]')
+      .hasValue(`${this.currentUser.paypalUsername}`);
   });
 
   test('edit mode disabled', async function (assert) {
@@ -101,7 +104,6 @@ module('Integration | Component | account-settings/details', function (hooks) {
     await fillIn('[data-test-input-name]', 'Wojciech');
     await fillIn('[data-test-input-surname]', 'Suchodolski');
     await fillIn('[data-test-input-email]', 'wojtekzbombasu@gmail.com');
-    await waitFor('[data-test-button-save]');
     await click('[data-test-button-save]');
 
     assert.dom('[data-test-input-name]').hasValue('Wojciech');
@@ -116,11 +118,12 @@ module('Integration | Component | account-settings/details', function (hooks) {
     assert
       .dom('[data-test-input-blik-number]')
       .hasValue(`${this.currentUser.blikNumber}`);
-    assert.dom('[data-test-input-bank-account-number]').hasValue(``);
     assert
       .dom('[data-test-input-revolut]')
       .hasValue(`${this.currentUser.revolutUsername}`);
-    assert.dom('[data-test-input-paypal]').hasValue(``);
+    assert
+      .dom('[data-test-input-paypal]')
+      .hasValue(`${this.currentUser.paypalUsername}`);
 
     assert.dom('[data-test-input-name]').hasAttribute('disabled');
     assert.dom('[data-test-input-surname]').hasAttribute('disabled');
