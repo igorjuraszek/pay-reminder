@@ -45,9 +45,7 @@ export default class HomeDashboardController extends Controller {
   get paymentsIAmWaitingFor() {
     return this.contributionsIOwn
       .map(({ contributors }) => {
-        return contributors.filter(({ isPaid }) => {
-          return !isPaid;
-        });
+        return contributors.filter(({ isPaid }) => !isPaid);
       })
       .flat();
   }
