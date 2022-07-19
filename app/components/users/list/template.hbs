@@ -1,4 +1,8 @@
-{{#each @users as |user|}}
-  <Users::List::User @user={{user}} @contributions={{@contributions}} />
+{{#each @users as |user index|}}
+  <Users::List::User
+    @user={{user}}
+    @contributions={{@contributions}}
+    @index={{index}}
+  />
 {{/each}}
 {{yield}}

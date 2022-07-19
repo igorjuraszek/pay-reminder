@@ -91,6 +91,7 @@ module('Integration | Component | account-settings/details', function (hooks) {
       .hasNoAttribute('disabled');
     assert.dom('[data-test-input-revolut]').hasNoAttribute('disabled');
     assert.dom('[data-test-input-paypal]').hasNoAttribute('disabled');
+
     assert.dom('[data-test-button-edit]').doesNotExist();
     assert.dom('[data-test-button-discard]').exists();
     assert.dom('[data-test-button-save]').exists();
@@ -139,7 +140,7 @@ module('Integration | Component | account-settings/details', function (hooks) {
     assert.dom('[data-test-button-save]').doesNotExist();
   });
 
-  test.skip('fields validation', async function (assert) {
+  test('fields validation', async function (assert) {
     await click('[data-test-button-edit]');
 
     assert.dom('[data-test-input-name]').hasNoAttribute('disabled');
@@ -153,8 +154,28 @@ module('Integration | Component | account-settings/details', function (hooks) {
       .hasNoAttribute('disabled');
     assert.dom('[data-test-input-revolut]').hasNoAttribute('disabled');
     assert.dom('[data-test-input-paypal]').hasNoAttribute('disabled');
+
     assert.dom('[data-test-button-edit]').doesNotExist();
     assert.dom('[data-test-button-discard]').exists();
     assert.dom('[data-test-button-save]').exists();
+    assert.dom('[data-test-button-save]').hasAttribute('disabled');
+
+    await fillIn('[data-test-input-surname]', '');
+    await click('[data-test-button-save]');
+
+    assert.dom('[data-test-button-discard]').exists();
+    assert.dom('[data-test-button-save]').exists();
+
+    assert.dom('[data-test-input-name]').hasNoAttribute('disabled');
+    assert.dom('[data-test-input-surname]').hasNoAttribute('disabled');
+    assert.dom('[data-test-input-username]').hasNoAttribute('disabled');
+    assert.dom('[data-test-input-password]').hasNoAttribute('disabled');
+    assert.dom('[data-test-input-email]').hasNoAttribute('disabled');
+    assert.dom('[data-test-input-blik-number]').hasNoAttribute('disabled');
+    assert
+      .dom('[data-test-input-bank-account-number]')
+      .hasNoAttribute('disabled');
+    assert.dom('[data-test-input-revolut]').hasNoAttribute('disabled');
+    assert.dom('[data-test-input-paypal]').hasNoAttribute('disabled');
   });
 });

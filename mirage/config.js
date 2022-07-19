@@ -12,6 +12,10 @@ export default function () {
   this.get('/users/:id');
   this.post('/users');
   this.put('/users/:id');
+  this.get('/contributions');
+  this.get('/contributions/:id');
+  this.post('/contributions');
+  this.put('/contributions/:id');
   /*
     Shorthand cheatsheet:
 
