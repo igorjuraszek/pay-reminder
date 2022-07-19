@@ -1,6 +1,8 @@
-<tr class={{this.payment.class}}>
-  <td>{{@contributionUser.contributor.username}}</td>
-  <td>{{@contributionUser.amount}} PLN</td>
+<tr class={{this.payment.class}} data-test-row={{@index}}>
+  <td
+    data-test-row-username={{@index}}
+  >{{@contributionUser.contributor.username}}</td>
+  <td data-test-row-amount={{@index}}>{{@contributionUser.amount}} PLN</td>
   {{#if this.isPaidByUser}}
     <td>{{this.payment.label}}</td>
     <td></td>

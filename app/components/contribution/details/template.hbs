@@ -1,9 +1,9 @@
 <div class='details'>
   <div class='text-center'>
-    <h2>{{@contribution.title}}</h2>
-    <h3>Owner: {{@contribution.owner.username}}</h3>
-    <h4>Deadline: {{this.deadlineFormat}}</h4>
-    <h4>Status: {{this.statusOfContribution}}</h4>
+    <h2 data-test-title>{{@contribution.title}}</h2>
+    <h3 data-test-owner>Owner: {{@contribution.owner.username}}</h3>
+    <h4 data-test-deadline>Deadline: {{this.deadlineFormat}}</h4>
+    <h4 data-test-status>Status: {{this.statusOfContribution}}</h4>
   </div>
 
   <table class='table'>
@@ -21,13 +21,15 @@
           @contributionUser={{this.myDebt}}
           @contribution={{@contribution}}
           @deadlineFormat={{this.deadlineFormat}}
+          @index={{0}}
         />
       {{else}}
-        {{#each @contribution.contributors as |contributionUser|}}
+        {{#each @contribution.contributors as |contributionUser index|}}
           <Contribution::Details::Row
             @contributionUser={{contributionUser}}
             @contribution={{@contribution}}
             @deadlineFormat={{this.deadlineFormat}}
+            @index={{index}}
           />
         {{/each}}
       {{/if}}
@@ -36,7 +38,7 @@
     <tfoot>
       <tr>
         <th scope='col'>Summary:</th>
-        <th scope='col'>{{@contribution.goal}} PLN</th>
+        <th scope='col' data-test-goal>{{@contribution.goal}} PLN</th>
         <th scope='col'></th>
         <th scope='col'></th>
       </tr>

@@ -16,6 +16,10 @@ export default function () {
   this.get('/contributions/:id');
   this.post('/contributions');
   this.put('/contributions/:id');
+  this.get('/contributionUsers');
+  this.get('/contributionUsers/:id');
+  this.post('/contributionUsers');
+  this.put('/contributionUsers/:id');
   /*
     Shorthand cheatsheet:
 
