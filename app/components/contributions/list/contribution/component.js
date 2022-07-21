@@ -15,10 +15,14 @@ export default class ContributionsListContributionComponent extends Component {
   }
 
   get myDebt() {
-    return this.currentContribution.contributors.filter(
-      ({ contributor }) =>
-        contributor.get('id') === this.session.currentUser.get('id')
-    ).firstObject;
+    const mydebt = this.currentContribution
+      .get('contributors')
+      .filter(
+        ({ contributor }) =>
+          contributor.get('id') === this.session.currentUser.get('id')
+      ).firstObject;
+    debugger;
+    return mydebt;
   }
 
   get currentContribution() {

@@ -1,5 +1,8 @@
-{{#each @contributions as |contribution|}}
-  <Contributions::List::Contribution @contribution={{contribution}} />
+{{#each @contributions as |contribution index|}}
+  <Contributions::List::Contribution
+    @contribution={{contribution}}
+    @index={{index}}
+  />
 {{/each}}
 
 {{yield}}
