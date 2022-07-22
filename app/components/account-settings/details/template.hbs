@@ -16,6 +16,7 @@
                 value={{@currentUser.name}}
                 disabled={{this.shouldBeLocked}}
                 {{on 'input' (fn this.onPropertyChange 'name')}}
+                data-test-input-name
               />
             </div>
             <div class='col-md-6'>
@@ -28,6 +29,7 @@
                 value={{@currentUser.surname}}
                 disabled={{this.shouldBeLocked}}
                 {{on 'input' (fn this.onPropertyChange 'surname')}}
+                data-test-input-surname
               />
             </div>
           </div>
@@ -41,6 +43,7 @@
               value={{@currentUser.username}}
               disabled={{this.shouldBeLocked}}
               {{on 'input' (fn this.onPropertyChange 'username')}}
+              data-test-input-username
             />
           </div>
           <div class='mb-3'>
@@ -53,6 +56,7 @@
               value={{@currentUser.password}}
               disabled={{this.shouldBeLocked}}
               {{on 'input' (fn this.onPropertyChange 'password')}}
+              data-test-input-password
             />
           </div>
 
@@ -66,6 +70,7 @@
               value={{@currentUser.email}}
               disabled={{this.shouldBeLocked}}
               {{on 'input' (fn this.onPropertyChange 'email')}}
+              data-test-input-email
             />
           </div>
 
@@ -79,6 +84,7 @@
               value={{@currentUser.blikNumber}}
               disabled={{this.shouldBeLocked}}
               {{on 'input' (fn this.onPropertyChange 'blikNumber')}}
+              data-test-input-blik-number
             />
           </div>
 
@@ -92,6 +98,7 @@
               value={{@currentUser.bankAccountNumber}}
               disabled={{this.shouldBeLocked}}
               {{on 'input' (fn this.onPropertyChange 'bankAccountNumber')}}
+              data-test-input-bank-account-number
             />
           </div>
 
@@ -106,6 +113,7 @@
               value={{@currentUser.revolutUsername}}
               disabled={{this.shouldBeLocked}}
               {{on 'input' (fn this.onPropertyChange 'revolutUsername')}}
+              data-test-input-revolut
             />
           </div>
 
@@ -119,6 +127,7 @@
               value={{@currentUser.paypalUsername}}
               disabled={{this.shouldBeLocked}}
               {{on 'input' (fn this.onPropertyChange 'paypalUsername')}}
+              data-test-input-paypal
             />
           </div>
           {{#if this.editMode}}
@@ -126,18 +135,21 @@
               class='btn btn-danger'
               type='button'
               {{on 'click' this.discardChanges}}
+              data-test-button-discard
             >Cancel</button>
             <button
               class='btn btn-primary'
               type='button'
               disabled={{this.shouldBeButtonDisabled}}
               {{on 'click' this.onSubmit}}
+              data-test-button-save
             >Save changes</button>
           {{else}}
             <button
               class='btn btn-primary'
               type='button'
               {{on 'click' this.onChangeMode}}
+              data-test-button-edit
             >Edit</button>
           {{/if}}
         </form>

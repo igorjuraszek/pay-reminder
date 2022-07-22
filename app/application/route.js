@@ -5,6 +5,12 @@ export default class ApplicationRoute extends Route {
   @service store;
 
   async beforeModel() {
+    const isFilledDatabase = localStorage.length;
+
+    if (isFilledDatabase) {
+      return;
+    }
+
     const user1 = {
       id: 1,
       username: 'admin',

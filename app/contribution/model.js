@@ -12,6 +12,6 @@ export default class ContributionModel extends Model {
   @attr('number') goal;
   @attr('boolean', { defaultValue: false }) isClosed;
   @attr('boolean', { defaultValue: false }) isPrivate;
-  @belongsTo('user') owner;
+  @belongsTo('user', { autoSave: true }) owner;
   @hasMany('contribution-user') contributors;
 }

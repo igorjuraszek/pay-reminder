@@ -1,4 +1,5 @@
 import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
 import { differenceInDays, isBefore } from 'date-fns';
 import { inject as service } from '@ember/service';
 
@@ -6,19 +7,28 @@ export default class ContributionsListContributionComponent extends Component {
   @service store;
   @service session;
 
+  @tracked myDebt;
+
+  constructor() {
+    super(...arguments);
+
+    this.myDebtSetter();
+  }
+
   get shouldBeContributionHidden() {
     const amIOwner = Boolean(
       this.args.contribution.owner.get('id') !==
         this.session.currentUser.get('id')
     );
-    return amIOwner && this.args.contribution.isPrivate;
+    return amIOwner && this.args.contribution.isPrivate && this.myDebt;
   }
 
-  get myDebt() {
-    return this.currentContribution.contributors.filter(
+  async myDebtSetter() {
+    const contributors = await this.currentContribution.get('contributors');
+    this.myDebt = contributors.find(
       ({ contributor }) =>
         contributor.get('id') === this.session.currentUser.get('id')
-    ).firstObject;
+    );
   }
 
   get currentContribution() {
