@@ -12,7 +12,6 @@ module('Integration | Component | users/list', function (hooks) {
     this.server.createList('user', 20);
     const store = this.owner.lookup('service:store');
     const userModels = await store.findAll('user');
-    console.log(userModels.firstObject);
     this.set('users', userModels);
 
     await render(hbs`<Users::List @users={{this.users}}/>`);
@@ -25,7 +24,6 @@ module('Integration | Component | users/list', function (hooks) {
     this.server.createList('user', 20);
     const store = this.owner.lookup('service:store');
     const userModels = await store.findAll('user');
-    console.log(userModels.firstObject);
     this.set('users', userModels);
 
     await render(hbs`<Users::List @users={{this.users}}/>`);
