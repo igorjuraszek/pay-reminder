@@ -1,10 +1,19 @@
 import Component from '@glimmer/component';
 import { inject as service } from '@ember/service';
+import { tracked } from '@glimmer/tracking';
 import { format } from 'date-fns';
 
 export default class ContributionDetailsComponent extends Component {
   @service store;
   @service session;
+
+  @tracked myDebt;
+
+  constructor() {
+    super(...arguments);
+
+    this.myDebtSetter();
+  }
 
   get currentContribution() {
     return this.args.contribution;
@@ -22,12 +31,14 @@ export default class ContributionDetailsComponent extends Component {
     return amIOwner && this.currentContribution.isPrivate;
   }
 
-  get myDebt() {
-    return this.currentContribution.contributors.filter(
+  async myDebtSetter() {
+    const contributors = await this.currentContribution.get('contributors');
+    this.myDebt = contributors.find(
       ({ contributor }) =>
         contributor.get('id') === this.session.currentUser.get('id')
-    ).firstObject;
+    );
   }
+
   get deadlineFormat() {
     const contribution = this.currentContribution.deadline;
     return format(contribution, 'dd-MM-yyyy');

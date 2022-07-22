@@ -1,3 +1,6 @@
-{{#each @contribution.contributors as |contribution-user|}}
-  <NewContribution::Contributors::Row @contributionUser={{contribution-user}} />
+{{#each @contribution.contributors as |contribution-user index|}}
+  <NewContribution::Contributors::Row
+    @contributionUser={{contribution-user}}
+    @index={{index}}
+  />
 {{/each}}

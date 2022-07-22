@@ -1,17 +1,19 @@
 <div class='mx-auto w-75 p-3'>
 
-  <div class='card text-center'>
+  <div class='card text-center' data-test-contribution={{@contributionIndex}}>
 
     <div class='card-body'>
       <h5 class='card-title'><LinkTo
           @route='home.contribution.show'
           @model={{@contribution}}
+          data-test-contribution-title={{@contributionIndex}}
         >{{@contribution.title}}</LinkTo></h5>
 
       <p class='card-text'>Owner:
         <LinkTo
           @route='home.user.show'
           @model={{@contribution.owner}}
+          data-test-contribution-owner={{@contributionIndex}}
         >{{@contribution.owner.username}}</LinkTo>
       </p>
       <p class='card-text'>Status: {{this.statusOfContribution}}</p>
@@ -29,12 +31,16 @@
             <Contributions::List::Contribution::Row
               @contributionUser={{this.myDebt}}
               @contribution={{@contribution}}
+              @contributionIndex={{@contributionIndex}}
+              @rowIndex={{0}}
             />
           {{else}}
-            {{#each @contribution.contributors as |contributionUser|}}
+            {{#each @contribution.contributors as |contributionUser index|}}
               <Contributions::List::Contribution::Row
                 @contributionUser={{contributionUser}}
                 @contribution={{@contribution}}
+                @contributionIndex={{@contributionIndex}}
+                @rowIndex={{index}}
               />
             {{/each}}
           {{/if}}
@@ -42,7 +48,10 @@
         <tfoot>
           <tr>
             <th scope='col'>Summary:</th>
-            <th scope='col'>{{@contribution.goal}} PLN</th>
+            <th
+              scope='col'
+              data-test-contribution-goal={{@contributionIndex}}
+            >{{@contribution.goal}} PLN</th>
             <th scope='col'></th>
           </tr>
         </tfoot>

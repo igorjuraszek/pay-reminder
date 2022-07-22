@@ -1,9 +1,9 @@
 import { module, test } from 'qunit';
 import { setupRenderingTest } from 'ember-qunit';
-import { render, click, fillIn } from '@ember/test-helpers';
+import { render } from '@ember/test-helpers';
 import { hbs } from 'ember-cli-htmlbars';
 import { setupMirage } from 'ember-cli-mirage/test-support';
-import { add, format } from 'date-fns';
+import { add } from 'date-fns';
 
 module('Integration | Component | contributions/list', function (hooks) {
   setupRenderingTest(hooks);
@@ -154,6 +154,77 @@ module('Integration | Component | contributions/list', function (hooks) {
   });
 
   test('it renders', async function (assert) {
-    await this.pauseTest();
+    this.contributions.map((contribution, contributionIndex) => {
+      assert.dom(`[data-test-contribution="${contributionIndex}"]`).exists();
+      assert
+        .dom(`[data-test-contribution-title="${contributionIndex}"]`)
+        .exists();
+      assert
+        .dom(`[data-test-contribution-owner="${contributionIndex}"]`)
+        .exists();
+      assert
+        .dom(`[data-test-contribution-goal="${contributionIndex}"]`)
+        .exists();
+    });
+  });
+
+  test('correct values', async function (assert) {
+    this.contributions.map((contribution, contributionIndex) => {
+      assert
+        .dom(`[data-test-contribution-title="${contributionIndex}"]`)
+        .hasText(contribution.title);
+      assert
+        .dom(`[data-test-contribution-owner="${contributionIndex}"]`)
+        .hasText(contribution.owner.get('username'));
+      assert
+        .dom(`[data-test-contribution-goal="${contributionIndex}"]`)
+        .hasText(`${contribution.goal} PLN`);
+    });
   });
 });
+
+//   test('correct values', async function (assert) {
+//     await this.pauseTest();
+//   });
+
+//   test('showing private contribution', async function (assert) {
+//     await this.pauseTest();
+//   });
+// });
+
+// `[data-test-contribution="${index}"]`
+// `[data-test-contribution-title="${index}"]`
+// `[data-test-contribution-owner="${index}"]`
+// `[data-test-contribution-goal="${index}"]`
+
+// `[data-test-username-row="${index}"]`
+// `[data-test-amount-row="${index}"]`
+// `[data-test-status-row="${index}"]`
+
+// test('it renders', async function (assert) {
+//   this.contributions.map((contribution, contributionIndex) => {
+//     assert.dom(`[data-test-contribution="${contributionIndex}"]`).exists();
+//     assert
+//       .dom(`[data-test-contribution-title="${contributionIndex}"]`)
+//       .exists();
+//     assert
+//       .dom(`[data-test-contribution-owner="${contributionIndex}"]`)
+//       .exists();
+//     assert.dom(`[data-test-contribution-goal="${contributionIndex}"]`).exists();
+
+//     contribution.contributors.map((row, rowIndex) => {
+//       assert
+//         .dom(`[data-test-contribution="${contributionIndex}"]`)
+//         .dom(`[data-test-username-row="${rowIndex}"]`)
+//         .exists();
+//       assert
+//         .dom(`[data-test-contribution="${contributionIndex}"]`)
+//         .dom(`[data-test-amount-row="${rowIndex}"]`)
+//         .exists();
+//       assert
+//         .dom(`[data-test-contribution="${contributionIndex}"]`)
+//         .dom(`[data-test-status-row="${rowIndex}"]`)
+//         .exists();
+//     });
+//   });
+// });
