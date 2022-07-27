@@ -7,7 +7,7 @@ import { selectChoose } from 'ember-power-select/test-support';
 
 import { add, format } from 'date-fns';
 
-module('Acceptance | dashboard', function (hooks) {
+module('Acceptance | contribution/new', function (hooks) {
   setupApplicationTest(hooks);
   setupMirage(hooks);
 
