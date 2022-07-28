@@ -15,6 +15,7 @@
                 placeholder='Enter your first name'
                 value={{@user.name}}
                 disabled='true'
+                data-test-input-name
               />
             </div>
             <div class='col-md-6'>
@@ -26,6 +27,7 @@
                 placeholder='Enter your last name'
                 value={{@user.surname}}
                 disabled='true'
+                data-test-input-surname
               />
             </div>
           </div>
@@ -38,6 +40,7 @@
               placeholder='Enter your username'
               value={{@user.username}}
               disabled='true'
+              data-test-input-username
             />
           </div>
 
@@ -50,6 +53,7 @@
               placeholder='Enter your email'
               value={{@user.email}}
               disabled='true'
+              data-test-input-email
             />
           </div>
           {{#if @user.blikNumber}}
@@ -62,6 +66,7 @@
                 placeholder='Enter your phone number for Blik transactions'
                 value={{@user.blikNumber}}
                 disabled='true'
+                data-test-input-blik-number
               />
             </div>
           {{/if}}
@@ -76,6 +81,7 @@
                 placeholder='Enter your bank account number'
                 value={{@user.bankAccountNumber}}
                 disabled='true'
+                data-test-input-bank-account-number
               />
             </div>
           {{/if}}
@@ -90,6 +96,7 @@
                 placeholder='Enter your Revolut username'
                 value={{@user.revolutUsername}}
                 disabled='true'
+                data-test-input-revolut
               />
             </div>
           {{/if}}
@@ -104,6 +111,7 @@
                 placeholder='Enter your PayPal username'
                 value={{@user.paypalUsername}}
                 disabled='true'
+                data-test-input-paypal
               />
             </div>
           {{/if}}

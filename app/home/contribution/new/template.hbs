@@ -11,6 +11,7 @@
           id='title'
           placeholder='title'
           {{on 'input' this.onTitleChange}}
+          data-test-contribution-title
         />
 
         <h3>Owner: {{this.contributionOwner.username}}</h3>
@@ -22,6 +23,7 @@
             type='checkbox'
             id='checkIsPrivate'
             {{on 'change' this.onChangePrivate}}
+            data-test-contribution-privacy
           />
           <label class='form-check-label' for='flexCheckDefault'>
             Private contribution
@@ -32,6 +34,7 @@
           type='date'
           id='deadline'
           {{on 'change' this.onChangeDeadline}}
+          data-test-contribution-deadline
         />
       </div>
 
@@ -49,6 +52,7 @@
           <tr>
             <th scope='col'>
               <PowerSelect
+                class='user-select'
                 @searchEnabled={{true}}
                 @options={{this.usersToAdd}}
                 @matcher={{this.myMatcher}}
@@ -70,12 +74,14 @@
                 value={{this.amount}}
                 placeholder='amount'
                 {{on 'input' this.onAmountChange}}
+                data-test-amount
               /></th>
             <th scope='col'></th>
             <th scope='col'><button
                 type='button'
                 class='btn btn-success'
                 {{on 'click' this.onAddContributor}}
+                data-test-add-contributor
               >Add</button></th>
           </tr>
           <NewContribution::Contributors
@@ -95,6 +101,7 @@
         type='submit'
         class='btn btn-primary'
         {{on 'click' this.onSubmit}}
+        data-test-create-contribution-submit
       >Create</button>
     </div>
   </form>

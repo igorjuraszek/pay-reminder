@@ -13,6 +13,7 @@
           id='username'
           placeholder='username'
           {{on 'input' this.onLoginChange}}
+          data-test-username
         />
       </div>
     </div>
@@ -28,11 +29,16 @@
           id='inputPassword'
           placeholder='password'
           {{on 'input' this.onPasswordChange}}
+          data-test-password
         />
       </div>
     </div>
     <div class='mb-3 row'>
-      <button type='submit' class='btn btn-primary'>Login</button>
+      <button
+        type='submit'
+        class='btn btn-primary'
+        data-test-submit
+      >Login</button>
     </div>
   </form>
   <div>
