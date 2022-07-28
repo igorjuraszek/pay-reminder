@@ -2,10 +2,8 @@ import { module, test } from 'qunit';
 import { visit, currentURL } from '@ember/test-helpers';
 import { setupApplicationTest } from 'ember-qunit';
 import { setupMirage } from 'ember-cli-mirage/test-support';
-import { click, fillIn } from '@ember/test-helpers';
-import { selectChoose } from 'ember-power-select/test-support';
 
-import { add, format } from 'date-fns';
+import { add } from 'date-fns';
 
 module('Acceptance | home/contributions/history', function (hooks) {
   setupApplicationTest(hooks);
@@ -87,63 +85,6 @@ module('Acceptance | home/contributions/history', function (hooks) {
       contributionId: secondContribution.id,
       amount: 100,
     });
-
-    // const thirdContribution = this.server.create('contribution', {
-    //   ownerId: thirdUser.id,
-    //   title: 'Jedzenie w Picollo',
-    //   deadline: add(new Date(), { days: -5 }),
-    //   goal: 65.5,
-    //   isClosed: true,
-    // });
-
-    // this.server.create('contribution-user', {
-    //   contributorId: thirdUser.id,
-    //   contributionId: thirdContribution.id,
-    //   isPaid: true,
-    //   amount: 15.5,
-    // });
-    // this.server.create('contribution-user', {
-    //   contributorId: secondUser.id,
-    //   contributionId: thirdContribution.id,
-    //   amount: 20,
-    // });
-    // this.server.create('contribution-user', {
-    //   contributorId: thirdUser.id,
-    //   contributionId: thirdContribution.id,
-    //   amount: 10,
-    // });
-    // this.server.create('contribution-user', {
-    //   contributorId: firstUser.id,
-    //   contributionId: thirdContribution.id,
-    //   amount: 20,
-    // });
-
-    // const foutrhContribution = this.server.create('contribution', {
-    //   ownerId: fourthUser.id,
-    //   title: 'Kwiaty',
-    //   deadline: add(new Date(), { days: -5 }),
-    //   goal: 60,
-    //   isPrivate: true,
-    //   isClosed: true,
-    // });
-
-    // this.server.create('contribution-user', {
-    //   contributorId: firstUser.id,
-    //   contributionId: foutrhContribution.id,
-    //   amount: 20,
-    // });
-
-    // this.server.create('contribution-user', {
-    //   contributorId: thirdUser.id,
-    //   contributionId: foutrhContribution.id,
-    //   amount: 20,
-    // });
-
-    // this.server.create('contribution-user', {
-    //   contributorId: fifthUser.id,
-    //   contributionId: foutrhContribution.id,
-    //   amount: 20,
-    // });
 
     const contributions = await store.findAll('contribution');
 

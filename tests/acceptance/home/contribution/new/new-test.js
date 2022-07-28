@@ -41,21 +41,9 @@ module('Acceptance | contribution/new', function (hooks) {
   });
 
   test('adding new contribution', async function (assert) {
-    const firstContributor = await this.server.create('user');
-    const secondContributor = await this.server.create('user');
-    const thirdContributor = await this.server.create('user');
-    const firstContributorModel = await this.store.findRecord(
-      'user',
-      firstContributor.id
-    );
-    const secondContributorModel = await this.store.findRecord(
-      'user',
-      secondContributor.id
-    );
-    const thirdContributorModel = await this.store.findRecord(
-      'user',
-      thirdContributor.id
-    );
+    await this.server.create('user');
+    await this.server.create('user');
+    await this.server.create('user');
 
     await visit(`/contribution/new`);
     assert.strictEqual(currentURL(), `/contribution/new`);
