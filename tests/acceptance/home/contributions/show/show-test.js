@@ -12,11 +12,8 @@ module('Acceptance | home/contributions/show', function (hooks) {
     this.sessionService = this.owner.lookup('service:session');
     const store = this.owner.lookup('service:store');
 
-    const firstUser = this.server.create('user');
-    const secondUser = this.server.create('user');
-    const thirdUser = this.server.create('user');
-    const fourthUser = this.server.create('user');
-    const fifthUser = this.server.create('user');
+    const [firstUser, secondUser, thirdUser, fourthUser, fifthUser] =
+      this.server.createList('user', 5);
 
     const firstContribution = this.server.create('contribution', {
       ownerId: firstUser.id,

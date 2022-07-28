@@ -27,16 +27,6 @@ module('Acceptance | user', function (hooks) {
     await visit(`/account`);
     assert.strictEqual(currentURL(), `/account`);
 
-    assert.dom('[data-test-input-name]').exists();
-    assert.dom('[data-test-input-surname]').exists();
-    assert.dom('[data-test-input-username]').exists();
-    assert.dom('[data-test-input-password]').exists();
-    assert.dom('[data-test-input-email]').exists();
-    assert.dom('[data-test-input-blik-number]').exists();
-    assert.dom('[data-test-input-bank-account-number]').exists();
-    assert.dom('[data-test-input-revolut]').exists();
-    assert.dom('[data-test-input-paypal]').exists();
-    assert.dom('[data-test-input-paypal]').exists();
     assert.dom('[data-test-button-edit]').exists();
 
     const { currentUser } = this.sessionService;

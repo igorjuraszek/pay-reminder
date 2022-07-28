@@ -41,9 +41,7 @@ module('Acceptance | contribution/new', function (hooks) {
   });
 
   test('adding new contribution', async function (assert) {
-    await this.server.create('user');
-    await this.server.create('user');
-    await this.server.create('user');
+    this.server.createList('user', 3);
 
     await visit(`/contribution/new`);
     assert.strictEqual(currentURL(), `/contribution/new`);

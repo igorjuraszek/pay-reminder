@@ -33,15 +33,6 @@ module('Acceptance | user', function (hooks) {
     await visit(`/user/${userToCheckModel.id}`);
     assert.strictEqual(currentURL(), `/user/${userToCheckModel.id}`);
 
-    assert.dom('[data-test-input-name]').exists();
-    assert.dom('[data-test-input-surname]').exists();
-    assert.dom('[data-test-input-username]').exists();
-    assert.dom('[data-test-input-email]').exists();
-    assert.dom('[data-test-input-blik-number]').exists();
-    assert.dom('[data-test-input-bank-account-number]').exists();
-    assert.dom('[data-test-input-revolut]').exists();
-    assert.dom('[data-test-input-paypal]').exists();
-
     assert.dom('[data-test-input-name]').hasValue(`${userToCheckModel.name}`);
     assert
       .dom('[data-test-input-surname]')
